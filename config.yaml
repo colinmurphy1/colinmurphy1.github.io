@@ -1,0 +1,15 @@
+baseURL: "/"
+languageCode: "en-US"
+theme: "fuji"
+title: "Colin Murphy's site"
+paginate: 10
+enableRobotsTXT: true
+
+menu:
+
+params:
+
+  # Fuji theme specific settings
+  showLicense: false
+  showToc: false
+  showComments: false
