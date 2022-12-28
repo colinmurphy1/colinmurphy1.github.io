@@ -4,12 +4,16 @@ theme: "fuji"
 title: "Colin Murphy's site"
 paginate: 10
 enableRobotsTXT: true
+enableEmoji: true
+disableKinds: ["taxonomy"]
+ignoreErrors: ["error-disable-taxonomy"]
 
 menu:
 
 params:
-
   # Fuji theme specific settings
-  showLicense: false
+  author: "Colin Murphy"
+  subTitle: "My personal notekeeping site"
+  defaultTheme: "auto"
   showToc: false
   showComments: false
