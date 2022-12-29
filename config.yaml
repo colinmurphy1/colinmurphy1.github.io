@@ -1,4 +1,4 @@
-baseURL: "/"
+baseURL: "https://colinmurphy.me/"
 title: "Colin Murphy's site"
 theme: "fuji"
 languageCode: "en-US"
