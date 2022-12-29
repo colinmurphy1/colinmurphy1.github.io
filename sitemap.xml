@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/</loc>
+    <lastmod>2022-12-29T12:17:12-06:00</lastmod>
+  </url><url>
+    <loc>/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</loc>
+    <lastmod>2022-12-29T12:17:12-06:00</lastmod>
+  </url><url>
+    <loc>/tags/mikrotik/</loc>
+    <lastmod>2022-12-29T12:17:12-06:00</lastmod>
+  </url><url>
+    <loc>/tags/networking/</loc>
+    <lastmod>2022-12-29T12:17:12-06:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-12-29T12:17:12-06:00</lastmod>
+  </url><url>
     <loc>/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</loc>
     <lastmod>2022-12-29T11:36:52-06:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2022-12-29T11:36:52-06:00</lastmod>
-  </url><url>
     <loc>/tags/linux/</loc>
-    <lastmod>2022-12-29T11:36:52-06:00</lastmod>
-  </url><url>
-    <loc>/tags/networking/</loc>
-    <lastmod>2022-12-29T11:36:52-06:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
     <lastmod>2022-12-29T11:36:52-06:00</lastmod>
   </url><url>
     <loc>/tags/wireguard/</loc>

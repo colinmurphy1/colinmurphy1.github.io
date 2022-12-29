@@ -16,19 +16,19 @@
 
 
 
-<title>linux - Colin Murphy&#39;s site</title>
+<title>mikrotik - Colin Murphy&#39;s site</title>
 
 
 <meta name="author" content="Colin Murphy" />
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/tags/linux/index.xml" title="Colin Murphy's site" />
+<link rel="alternate" type="application/rss+xml" href="/tags/mikrotik/index.xml" title="Colin Murphy's site" />
 
-<meta property="og:title" content="linux" />
-<meta name="twitter:title" content="linux" />
+<meta property="og:title" content="mikrotik" />
+<meta name="twitter:title" content="mikrotik" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/tags/linux/" /><meta name="twitter:card" content="summary" /><meta property="og:updated_time" content="2022-12-29T11:36:52-06:00" />
+<meta property="og:url" content="/tags/mikrotik/" /><meta name="twitter:card" content="summary" /><meta property="og:updated_time" content="2022-12-29T12:17:12-06:00" />
 
 
 <style>
@@ -93,61 +93,25 @@
                 
 
 <div class="page-info">
-  <span>Posts with the tag linux: </span>
+  <span>Posts with the tag mikrotik: </span>
 </div>
 
 
 
 <div class="post">
   <h2 class="post-item post-title">
-    <a href="/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/">Access your local network from anywhere with WireGuard VPN</a>
+    <a href="/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/">Creating a wireless bridge using a MikroTik router</a>
   </h2>
   <div class="post-item post-meta">
     <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-12-29</span>
 
 
 
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">linux</a>&nbsp;<a href="/tags/wireguard">wireguard</a>&nbsp;<a href="/tags/networking">networking</a>&nbsp;</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/networking">networking</a>&nbsp;<a href="/tags/mikrotik">mikrotik</a>&nbsp;</span>
 
   </div>
   <div class="post-item post-summary markdown-body">
-    For a very long time, I have been using SSH tunneling to access my selfhosted services. This works great, but exposes your server to a multitude of threats. I had to implement additional defenses, such as the Fail2Ban daemon to automatically ban IPs after multiple failed login attempts.
-I decided that a better option would be to simply implement a VPN. I ended up choosing WireGuard as it&rsquo;s built into the kernel, and offers great throughput if I needed to transfer files over the VPN.
-  </div>
-</div>
-
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="/2020/09/booting-linux-off-an-nvme-ssd-on-an-older-computer/">Booting Linux off an NVMe SSD on an older computer</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-09-07</span>
-
-
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">linux</a>&nbsp;<a href="/tags/debian">debian</a>&nbsp;</span>
-
-  </div>
-  <div class="post-item post-summary markdown-body">
-    <p>Most pre-2015 computers, like my HP Z230 workstation, are only able to boot off of SATA disks. While SATA SSDs are perfectly adequate for most workloads, I wanted to install my operating system on a much faster PCIe-based NVMe SSD.</p>
-<p>Despite being able to boot from SATA disks, you can effectively trick an older computer into loading an Linux off a NVMe SSD by installing the GRUB bootloader and boot partition on a SATA SSD or hard drive.</p>
-  </div>
-</div>
-
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/">Creating a simple adblocking DNS server using dnsmasq</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-02-01</span>
-
-
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">linux</a>&nbsp;<a href="/tags/networking">networking</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;</span>
-
-  </div>
-  <div class="post-item post-summary markdown-body">
-    <p>This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to <a href="https://pi-hole.net" target="_blank">Pi-Hole</a>, which requires being run on a Raspberry Pi or in a Docker container.</p>
+    I have some devices on my local network that are wired-only, or have unreliable Wi-Fi. Instead of running ethernet to the room that contains these devices, I opted to create a wireless bridge using a MikroTik hAP AC^2 wireless router I had lying around. For those who are unaware, a wireless bridge is a router configuration that &ldquo;bridges&rdquo;, or links, the network connection of a wired device to a wireless network.
   </div>
 </div>
 
