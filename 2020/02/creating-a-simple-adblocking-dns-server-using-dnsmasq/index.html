@@ -1,6 +1,119 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=generator content="Hugo 0.109.0"><link rel="shortcut icon" href=https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico><title>Creating a simple adblocking DNS server using dnsmasq - Colin Murphy's site</title><meta name=author content="Colin Murphy"><meta name=description content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities."><meta name=keywords content="linux,networking,tutorial"><meta property="og:title" content="Creating a simple adblocking DNS server using dnsmasq"><meta name=twitter:title content="Creating a simple adblocking DNS server using dnsmasq"><meta property="og:type" content="article"><meta property="og:url" content="/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/"><meta property="og:description" content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities."><meta name=twitter:description content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities."><meta name=twitter:card content="summary"><meta property="article:published_time" content="2020-02-01T00:00:00-06:00"><meta property="article:modified_time" content="2020-02-01T00:00:00-06:00"><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css integrity="sha512-tKIbXT6x0KUSl+MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q=="></head><body data-theme=auto data-theme-auto=true><script data-cfasync=false>var fujiThemeData=localStorage.getItem("fuji_data-theme");fujiThemeData?fujiThemeData!=="auto"&&document.body.setAttribute("data-theme",fujiThemeData==="dark"?"dark":"light"):localStorage.setItem("fuji_data-theme","auto")</script><header><div class="container-lg clearfix"><div class="col-12 header"><a class=title-main href=/>Colin Murphy's site</a>
-<span class=title-sub>My personal notekeeping site</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/>Creating a simple adblocking DNS server using dnsmasq</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-02-01</span>
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/linux>linux</a>&nbsp;<a href=/tags/networking>networking</a>&nbsp;<a href=/tags/tutorial>tutorial</a>&nbsp;</span></div><div class="post-content markdown-body"><p>This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to <a href=https://pi-hole.net target=_blank>Pi-Hole</a>, which requires being run on a Raspberry Pi or in a Docker container.</p><p>First, install <code>dnsmasq</code> using your distribution&rsquo;s package manager.</p><p>Next, replace the contents of <code>/etc/dnsmasq.conf</code> with the following:</p><pre><code>domain-needed
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.109.0">
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Creating a simple adblocking DNS server using dnsmasq - Colin Murphy&#39;s site</title>
+
+
+<meta name="author" content="Colin Murphy" />
+
+
+<meta name="description" content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities." />
+
+
+<meta name="keywords" content="linux, networking, tutorial" />
+
+
+<meta property="og:title" content="Creating a simple adblocking DNS server using dnsmasq" />
+<meta name="twitter:title" content="Creating a simple adblocking DNS server using dnsmasq" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/" /><meta property="og:description" content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities." />
+<meta name="twitter:description" content="How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities." /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2020-02-01T00:00:00-06:00" /><meta property="article:modified_time" content="2020-02-01T00:00:00-06:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="/">Colin Murphy&#39;s site</a>
+            
+            <span class="title-sub">My personal notekeeping site</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/">Creating a simple adblocking DNS server using dnsmasq</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-02-01</span>
+
+
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">linux</a>&nbsp;<a href="/tags/networking">networking</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to <a href="https://pi-hole.net" target="_blank">Pi-Hole</a>, which requires being run on a Raspberry Pi or in a Docker container.</p>
+<p>First, install <code>dnsmasq</code> using your distribution&rsquo;s package manager.</p>
+<p>Next, replace the contents of <code>/etc/dnsmasq.conf</code> with the following:</p>
+<pre><code>domain-needed
 bogus-priv
 no-resolv
 server=8.8.8.8
@@ -10,31 +123,194 @@ listen-address=127.0.0.1
 cache-size=10000
 local-ttl=300
 addn-hosts=/etc/hosts-block
-</code></pre><p><em>Note: you can remove the <code>interface</code> and <code>listen-address</code> lines if you want <code>dnsmasq</code> to listen on all interfaces.</em></p><p>Next, you will need to download an ad server list. We will be using Peter Lowe&rsquo;s <a href=https://pgl.yoyo.org/adservers/ target=_blank>adservers</a> list in this example, but you can use other ones, such as <a href=http://winhelp2002.mvps.org/hosts.txt target=_blank>this one</a> available to use.</p><pre><code>curl &quot;https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&amp;showintro=0&quot; -o /tmp/hosts-block
+</code></pre>
+<p><em>Note: you can remove the <code>interface</code> and <code>listen-address</code> lines if you want <code>dnsmasq</code> to listen on all interfaces.</em></p>
+<p>Next, you will need to download an ad server list. We will be using Peter Lowe&rsquo;s <a href="https://pgl.yoyo.org/adservers/" target="_blank">adservers</a> list in this example, but you can use other ones, such as <a href="http://winhelp2002.mvps.org/hosts.txt" target="_blank">this one</a> available to use.</p>
+<pre><code>curl &quot;https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&amp;showintro=0&quot; -o /tmp/hosts-block
 sudo mv /tmp/hosts-block /etc
-</code></pre><p>Finally, start <code>dnsmasq</code></p><pre><code># Alpine Linux
+</code></pre>
+<p>Finally, start <code>dnsmasq</code></p>
+<pre><code># Alpine Linux
 rc-service dnsmasq start
 
 # systemd distros (Debian, Ubuntu, Fedora, etc)
 systemctl start dnsmasq 
-</code></pre><p>That&rsquo;s it! Enjoy your new ad-blocking DNS server. Remember to set your routers&rsquo; DHCP server to hand out the IP of your new DNS server.</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>Pages</h3><ul><li><a href=/about>About</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>Links</h3><ul></ul></div><div class="sidebar-item sidebar-tags"><h3>Tags</h3><div><span><a href=/tags/cars/>cars</a></span>
-<span><a href=/tags/debian/>debian</a></span>
-<span><a href=/tags/electronics/>electronics</a></span>
-<span><a href=/tags/gaming/>gaming</a></span>
-<span><a href=/tags/linux/>linux</a></span>
-<span><a href=/tags/networking/>networking</a></span>
-<span><a href=/tags/repair/>repair</a></span>
-<span><a href=/tags/tutorial/>tutorial</a></span></div></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><h3>Pages</h3><ul><li><a href=/about>About</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>Links</h3><ul></ul></div><div class="sidebar-item sidebar-tags"><h3>Tags</h3><div><span><a href=/tags/cars/>cars</a></span>
-<span><a href=/tags/debian/>debian</a></span>
-<span><a href=/tags/electronics/>electronics</a></span>
-<span><a href=/tags/gaming/>gaming</a></span>
-<span><a href=/tags/linux/>linux</a></span>
-<span><a href=/tags/networking/>networking</a></span>
-<span><a href=/tags/repair/>repair</a></span>
-<span><a href=/tags/tutorial/>tutorial</a></span></div></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2022
-<a href=/>Colin Murphy</a>
-| Powered by <a href=https://github.com/dsrkafuu/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin=anonymous></script>
-<script defer src=/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8+XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ+Ao0UlWGqODw=="></script></body></html>
+</code></pre>
+<p>That&rsquo;s it! Enjoy your new ad-blocking DNS server. Remember to set your routers&rsquo; DHCP server to hand out the IP of your new DNS server.</p>
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/about">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/cars/">cars</a>
+            </span>
+            
+            <span>
+                <a href="/tags/debian/">debian</a>
+            </span>
+            
+            <span>
+                <a href="/tags/electronics/">electronics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gaming/">gaming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linux/">linux</a>
+            </span>
+            
+            <span>
+                <a href="/tags/networking/">networking</a>
+            </span>
+            
+            <span>
+                <a href="/tags/repair/">repair</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tutorial/">tutorial</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/about">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/cars/">cars</a>
+            </span>
+            
+            <span>
+                <a href="/tags/debian/">debian</a>
+            </span>
+            
+            <span>
+                <a href="/tags/electronics/">electronics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gaming/">gaming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linux/">linux</a>
+            </span>
+            
+            <span>
+                <a href="/tags/networking/">networking</a>
+            </span>
+            
+            <span>
+                <a href="/tags/repair/">repair</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tutorial/">tutorial</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022
+                <a href="/">Colin Murphy</a>
+                
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>

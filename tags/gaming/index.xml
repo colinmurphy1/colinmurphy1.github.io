@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>gaming on Colin Murphy's site</title><link>/tags/gaming/</link><description>Recent content in gaming on Colin Murphy's site</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 22 Jul 2019 00:00:00 -0600</lastBuildDate><atom:link href="/tags/gaming/index.xml" rel="self" type="application/rss+xml"/><item><title>Installing OptiFine without installing Java</title><link>/2019/07/installing-optifine-without-installing-java/</link><pubDate>Mon, 22 Jul 2019 00:00:00 -0600</pubDate><guid>/2019/07/installing-optifine-without-installing-java/</guid><description>I&amp;rsquo;m a huge fan of using the OptiFine mod while playing Minecraft. It makes the game run smoother on my Mac, and allows me to use really cool shaders on my gaming desktop. However, to install OptiFine, you need to have a Java runtime installed. If you don&amp;rsquo;t want to pollute your system by installing Java, you can simply use the Java runtime that is included with Minecraft to install OptiFine.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gaming on Colin Murphy&#39;s site</title>
+    <link>/tags/gaming/</link>
+    <description>Recent content in gaming on Colin Murphy&#39;s site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 -0600</lastBuildDate><atom:link href="/tags/gaming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Installing OptiFine without installing Java</title>
+      <link>/2019/07/installing-optifine-without-installing-java/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 -0600</pubDate>
+      
+      <guid>/2019/07/installing-optifine-without-installing-java/</guid>
+      <description>I&amp;rsquo;m a huge fan of using the OptiFine mod while playing Minecraft. It makes the game run smoother on my Mac, and allows me to use really cool shaders on my gaming desktop. However, to install OptiFine, you need to have a Java runtime installed. If you don&amp;rsquo;t want to pollute your system by installing Java, you can simply use the Java runtime that is included with Minecraft to install OptiFine.</description>
+    </item>
+    
+  </channel>
+</rss>
