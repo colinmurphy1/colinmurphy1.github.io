@@ -1,7 +1,7 @@
 ---
 title: 'Installing OptiFine without installing Java'
 date: 2019-07-22T00:00:00-06:00
-draft: false
+draft: true
 authors: "Colin"
 categories: ['notes']
 tags: ['gaming']
