@@ -1,0 +1,7 @@
+{
+    // Create a ruler at 80 columns to maximize readability while writing
+    // blog posts
+    "editor.rulers":[ 
+        80
+    ]
+}
