@@ -1,19 +1,39 @@
 baseURL: "/"
-languageCode: "en-US"
-theme: "fuji"
 title: "Colin Murphy's site"
+theme: "fuji"
+languageCode: "en-US"
+defaultContentLanguage: "en"
 paginate: 10
 enableRobotsTXT: true
 enableEmoji: true
 disableKinds: ["taxonomy"]
 ignoreErrors: ["error-disable-taxonomy"]
 
+permalinks:
+  posts: "/:year/:month/:title"
+
 menu:
+  nav:
+    - name: "About"
+      url: "/about"  
+      weight: 10
+#  link:
+#    - name: "Wiki"
+#      url: "https://home.colinmurphy.me"
+#      weight: 10
 
 params:
   # Fuji theme specific settings
+  # Settings pulled from https://github.com/dsrkafuu/hugo-theme-fuji/blob/master/exampleSite/config.toml
   author: "Colin Murphy"
   subTitle: "My personal notekeeping site"
   defaultTheme: "auto"
   showToc: false
   showComments: false
+
+  # Show only main posts in homepage
+  mainSections: ["posts"]
+
+markup:
+  highlight:
+    codeFences: false # Disable Hugo syntax highlighting
