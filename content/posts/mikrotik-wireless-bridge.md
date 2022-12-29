@@ -66,7 +66,7 @@ before.
 ## Create a bridge interface
 
 We will first need to configure a bridge. The bridge will link all interfaces
-on the device, including the two wireless radios on the hAP AC^2.
+on the device, including the two wireless radios on the hAP AC<sup>2</sup>.
 
     /interface bridge
     add name=bridge1
