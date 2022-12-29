@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 29 Dec 2022 12:17:12 -0600</lastBuildDate><atom:link href="/tags/mikrotik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a wireless bridge using a MikroTik router</title>
-      <link>/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</link>
+      <link>/posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</link>
       <pubDate>Thu, 29 Dec 2022 12:17:12 -0600</pubDate>
       
-      <guid>/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</guid>
+      <guid>/posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</guid>
       <description>I have some devices on my local network that are wired-only, or have unreliable Wi-Fi. Instead of running ethernet to the room that contains these devices, I opted to create a wireless bridge using a MikroTik hAP AC^2 wireless router I had lying around. For those who are unaware, a wireless bridge is a router configuration that &amp;ldquo;bridges&amp;rdquo;, or links, the network connection of a wired device to a wireless network.</description>
     </item>
     

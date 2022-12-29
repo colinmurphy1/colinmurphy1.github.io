@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 29 Dec 2022 11:36:52 -0600</lastBuildDate><atom:link href="/tags/wireguard/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Access your local network from anywhere with WireGuard VPN</title>
-      <link>/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</link>
+      <link>/posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</link>
       <pubDate>Thu, 29 Dec 2022 11:36:52 -0600</pubDate>
       
-      <guid>/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</guid>
+      <guid>/posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</guid>
       <description>For a very long time, I have been using SSH tunneling to access my selfhosted services. This works great, but exposes your server to a multitude of threats. I had to implement additional defenses, such as the Fail2Ban daemon to automatically ban IPs after multiple failed login attempts.
 I decided that a better option would be to simply implement a VPN. I ended up choosing WireGuard as it&amp;rsquo;s built into the kernel, and offers great throughput if I needed to transfer files over the VPN.</description>
     </item>

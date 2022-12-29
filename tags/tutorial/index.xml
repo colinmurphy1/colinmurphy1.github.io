@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 01 Feb 2020 00:00:00 -0600</lastBuildDate><atom:link href="/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a simple adblocking DNS server using dnsmasq</title>
-      <link>/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</link>
+      <link>/posts/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 -0600</pubDate>
       
-      <guid>/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</guid>
+      <guid>/posts/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</guid>
       <description>&lt;p&gt;This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to &lt;a href=&#34;https://pi-hole.net&#34; target=&#34;_blank&#34;&gt;Pi-Hole&lt;/a&gt;, which requires being run on a Raspberry Pi or in a Docker container.&lt;/p&gt;</description>
     </item>
     

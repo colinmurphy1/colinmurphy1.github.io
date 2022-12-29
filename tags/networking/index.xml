@@ -9,29 +9,29 @@
     <lastBuildDate>Thu, 29 Dec 2022 12:17:12 -0600</lastBuildDate><atom:link href="/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a wireless bridge using a MikroTik router</title>
-      <link>/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</link>
+      <link>/posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</link>
       <pubDate>Thu, 29 Dec 2022 12:17:12 -0600</pubDate>
       
-      <guid>/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</guid>
+      <guid>/posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/</guid>
       <description>I have some devices on my local network that are wired-only, or have unreliable Wi-Fi. Instead of running ethernet to the room that contains these devices, I opted to create a wireless bridge using a MikroTik hAP AC^2 wireless router I had lying around. For those who are unaware, a wireless bridge is a router configuration that &amp;ldquo;bridges&amp;rdquo;, or links, the network connection of a wired device to a wireless network.</description>
     </item>
     
     <item>
       <title>Access your local network from anywhere with WireGuard VPN</title>
-      <link>/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</link>
+      <link>/posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</link>
       <pubDate>Thu, 29 Dec 2022 11:36:52 -0600</pubDate>
       
-      <guid>/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</guid>
+      <guid>/posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/</guid>
       <description>For a very long time, I have been using SSH tunneling to access my selfhosted services. This works great, but exposes your server to a multitude of threats. I had to implement additional defenses, such as the Fail2Ban daemon to automatically ban IPs after multiple failed login attempts.
 I decided that a better option would be to simply implement a VPN. I ended up choosing WireGuard as it&amp;rsquo;s built into the kernel, and offers great throughput if I needed to transfer files over the VPN.</description>
     </item>
     
     <item>
       <title>Creating a simple adblocking DNS server using dnsmasq</title>
-      <link>/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</link>
+      <link>/posts/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 -0600</pubDate>
       
-      <guid>/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</guid>
+      <guid>/posts/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/</guid>
       <description>&lt;p&gt;This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to &lt;a href=&#34;https://pi-hole.net&#34; target=&#34;_blank&#34;&gt;Pi-Hole&lt;/a&gt;, which requires being run on a Raspberry Pi or in a Docker container.&lt;/p&gt;</description>
     </item>
     
