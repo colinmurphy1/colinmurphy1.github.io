@@ -10,7 +10,7 @@ disableKinds: ["taxonomy"]
 ignoreErrors: ["error-disable-taxonomy"]
 
 permalinks:
-  posts: "/:year/:month/:title"
+  posts: "/:section/:year/:month/:title"
 
 menu:
   nav:
