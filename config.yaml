@@ -17,10 +17,10 @@ menu:
     - name: "About"
       url: "/about"  
       weight: 10
-#  link:
-#    - name: "Wiki"
-#      url: "https://home.colinmurphy.me"
-#      weight: 10
+  link:
+    - name: "GitHub"
+      url: "https://github.com/colinmurphy1/"
+      weight: 10
 
 params:
   # Fuji theme specific settings
@@ -35,5 +35,8 @@ params:
   mainSections: ["posts"]
 
 markup:
+  goldmark:
+    renderer:
+      unsafe: true # Allow HTML to be embedded in markdown pages
   highlight:
     codeFences: false # Disable Hugo syntax highlighting
