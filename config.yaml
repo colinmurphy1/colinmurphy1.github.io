@@ -28,7 +28,7 @@ params:
   author: "Colin Murphy"
   subTitle: "Linux, homelabbing, networking, programming, and more"
   defaultTheme: "auto"
-  showToc: false
+  showToc: true
   showComments: false
 
   # Show only main posts in homepage
