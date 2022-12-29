@@ -155,6 +155,13 @@ service for it:
 systemctl enable wg-quick@wg0
 {{</ highlight >}}
 
+For my client, I am using the WireGuard Windows application. To configure it,
+you will need to the generated configuration into it, and add in the keys
+where required. Once it's configured, you can then connect to the VPN. 
+
+Other clients, such as the iOS and Android clients, will be configured in a 
+similar fashion.
+
 That's it! You should now be able to access your local network resources over
 a VPN. You can test connectivity by pinging the server peer address
 (192.168.99.1), and a LAN address such as 192.168.1.1. If you get a reply from
