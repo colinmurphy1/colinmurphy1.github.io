@@ -199,6 +199,11 @@ run the <code>wg</code> command to verify it is running:</p>
 <p>To make the WireGuard interface start upon boot, you can enable the systemd
 service for it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable wg-quick@wg0</span></span></code></pre></div>
+<p>For my client, I am using the WireGuard Windows application. To configure it,
+you will need to the generated configuration into it, and add in the keys
+where required. Once it&rsquo;s configured, you can then connect to the VPN.</p>
+<p>Other clients, such as the iOS and Android clients, will be configured in a
+similar fashion.</p>
 <p>That&rsquo;s it! You should now be able to access your local network resources over
 a VPN. You can test connectivity by pinging the server peer address
 (192.168.99.1), and a LAN address such as 192.168.1.1. If you get a reply from
