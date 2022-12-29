@@ -3,7 +3,6 @@ title: "Booting Linux off an NVMe SSD on an older computer"
 date: 2020-09-07T21:06:17-05:00
 draft: false
 tags: ['linux', 'debian']
-categories: ['notes']
 keywords: ['linux', 'nvme ssd', 'debian nvme', 'linux nvme', 'booting linux off nvme']
 description: "How to boot Linux off an NVMe SSD on an unsupported computer."
 authors: Colin

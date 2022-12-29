@@ -6,11 +6,16 @@ description: "How to create a simple wireless bridge with a MikroTik router."
 tags:
   - networking
   - mikrotik
+keywords:
+  - mikrotik
+  - mikrotik wireless bridge
+  - wireless bridge
+  - mikrotik bridge
 ---
 
 I have some devices on my local network that are wired-only, or have unreliable
 Wi-Fi. Instead of running ethernet to the room that contains these devices,
-I opted to create a wireless bridge using a MikroTik hAP AC^2 wireless router
+I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup> wireless router
 I had lying around. For those who are unaware, a wireless bridge is a
 router configuration that "bridges", or links, the network connection of a
 wired device to a wireless network.
@@ -20,7 +25,7 @@ better than using a consumer grade router in bridge mode. On an older ASUS
 RT-AC1900P (a variant of the popular RT-AC68U sold at Best Buy and other
 retailers), I was only getting about 25MB/s throughput. On the MikroTik, I
 could easily get near to over 100MB/s two floors away from my router. That is a
-huge difference, especially considering the HAP AC^2 does not have external
+huge difference, especially considering the HAP AC<sup>2</sup> does not have external
 wireless antennas!
 
 ## WinBox console
@@ -117,7 +122,7 @@ probably want to change this to your country's [regulatory domain][0].
 MikroTik only supports L2 bridging if the access point the router is connecting
 to is also MikroTik. In my case, I'm not using a MikroTik access point, so it is
 fine to use this mode. If any MikroTik gurus know of a better way to do this
-and it still uses a bridge and no NAT, I'm all ears! ;) 
+and it still uses a bridge and no NAT, I'm all ears! 😉
 
 ## Disable unnecessary services
 

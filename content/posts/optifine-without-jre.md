@@ -3,7 +3,6 @@ title: 'Installing OptiFine without installing Java'
 date: 2019-07-22T00:00:00-06:00
 draft: true
 authors: "Colin"
-categories: ['notes']
 tags: ['gaming']
 keywords: ['minecraft', 'optifine', 'installing optifine without java']
 description: "How to install the Minecraft OptiFine mod without installing the Java runtime."
