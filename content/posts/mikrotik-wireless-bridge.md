@@ -58,10 +58,12 @@ the below command:
     Dangerous! Reset anyway? [y/N]: y
 
 This will reset the router to a default configuration that does not contain
-any sort of settings.
+any sort of settings. This will make the configuration in the next steps a lot 
+easier.
 
 Once the router reboots, connect to it again using WinBox the same way as
-before.
+before. If you had set an administrator password, it has likely been reset back
+to the default.
 
 ## Create a bridge interface
 
