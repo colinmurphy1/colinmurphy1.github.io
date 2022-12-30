@@ -6,27 +6,27 @@ description: "How to create a simple wireless bridge with a MikroTik router."
 tags:
   - networking
   - mikrotik
-keywords:
-  - mikrotik
-  - mikrotik wireless bridge
-  - wireless bridge
-  - mikrotik bridge
 ---
 
 I have some devices on my local network that are wired-only, or have unreliable
 Wi-Fi. Instead of running ethernet to the room that contains these devices,
-I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup> wireless router
-I had lying around. For those who are unaware, a wireless bridge is a
-router configuration that "bridges", or links, the network connection of a
-wired device to a wireless network.
+I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup>
+wireless router I had lying around. When configured as a wireless bridge, the
+MikroTik router will connect a wired network to a wireless network.
+
+Additionally, as this works as a bridge, there is no sort of NAT (network
+address translation) running, so it will appear on the same network as the rest
+of your devices. You also will not need to configure any static routes,
+seamlessly integrating the wired devices connected to the router with the rest
+of your network.
 
 I have found that creating a wireless bridge with a MikroTik router works much
 better than using a consumer grade router in bridge mode. On an older ASUS
 RT-AC1900P (a variant of the popular RT-AC68U sold at Best Buy and other
 retailers), I was only getting about 25MB/s throughput. On the MikroTik, I
 could easily get near to over 100MB/s two floors away from my router. That is a
-huge difference, especially considering the HAP AC<sup>2</sup> does not have external
-wireless antennas!
+huge difference, especially considering the HAP AC<sup>2</sup> does not have
+external wireless antennas!
 
 ## WinBox console
 
@@ -51,14 +51,17 @@ router.
 
 ## Factory resetting the router
 
-I strongly recommend resetting the router to a default configuration by running
-the below command:
+The default configuration of a hAP ac<sup>2</sup> is set up to work as a SOHO
+router, with network address translation and other features enabled. This is
+not optimal for our use case, so we will need to factory reset this router to
+an empty configuration. You can reset the configuration of the router by
+running the below command:
 
-    [admin@MikroTik] > /system reset-configuration no-defaults
+    /system/reset-configuration no-defaults=yes
     Dangerous! Reset anyway? [y/N]: y
 
-This will reset the router to a default configuration that does not contain
-any sort of settings. This will make the configuration in the next steps a lot 
+This will reset the router to an empty configuration with no interfaces
+configured. This will make the configuration in the following steps a lot
 easier.
 
 Once the router reboots, connect to it again using WinBox the same way as
@@ -115,9 +118,10 @@ profile we created, and your SSID.
 
 I will be connecting over 5GHz, so I will be using wlan2, the 5GHz radio. It has
 been enabled, as `disabled=no` is set. The 2.4GHz radio is disabled in this 
-configuration as 5GHz has better throughput, especially as we will be connecting
-using 802.11ac Wi-Fi. These settings are used for the United States, so you will
-probably want to change this to your country's [regulatory domain][0].
+configuration as 5GHz offers better bandwidth, especially as we will be
+connecting using 802.11ac Wi-Fi. These settings are used for the United States,
+so you will probably want to change this to your country's
+[regulatory domain][0].
 
 **One thing worth noting**, MikroTik [does not recommend][1] using the
 `station-psuedobridge` wireless mode as it does not support layer 2 bridging.
