@@ -30,6 +30,7 @@ params:
   defaultTheme: "auto"
   showToc: true
   showComments: false
+  disableDarkImage: true # Images will not be dimmed with dark theme
 
   # Show only main posts in homepage
   mainSections: ["posts"]
