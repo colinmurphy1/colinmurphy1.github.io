@@ -26,7 +26,7 @@ params:
   # Fuji theme specific settings
   # Settings pulled from https://github.com/dsrkafuu/hugo-theme-fuji/blob/master/exampleSite/config.toml
   author: "Colin Murphy"
-  subTitle: "Linux, homelabbing, networking, programming, and more"
+  subTitle: "Linux, homelabbing, programming, and more"
   defaultTheme: "auto"
   showToc: true
   showComments: false
