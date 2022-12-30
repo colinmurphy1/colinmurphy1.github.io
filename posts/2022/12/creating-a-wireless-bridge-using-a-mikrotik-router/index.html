@@ -2,27 +2,33 @@
 <span class=title-sub>Linux, homelabbing, networking, programming, and more</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://colinmurphy.me/posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/>Creating a wireless bridge using a MikroTik router</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-12-29</span>
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/networking>networking</a>&nbsp;<a href=/tags/mikrotik>mikrotik</a>&nbsp;</span></div><div class="post-content markdown-body"><p>I have some devices on my local network that are wired-only, or have unreliable
 Wi-Fi. Instead of running ethernet to the room that contains these devices,
-I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup> wireless router
-I had lying around. For those who are unaware, a wireless bridge is a
-router configuration that &ldquo;bridges&rdquo;, or links, the network connection of a
-wired device to a wireless network.</p><p>I have found that creating a wireless bridge with a MikroTik router works much
+I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup>
+wireless router I had lying around. When configured as a wireless bridge, the
+MikroTik router will connect a wired network to a wireless network.</p><p>Additionally, as this works as a bridge, there is no sort of NAT (network
+address translation) running, so it will appear on the same network as the rest
+of your devices. You also will not need to configure any static routes,
+seamlessly integrating the wired devices connected to the router with the rest
+of your network.</p><p>I have found that creating a wireless bridge with a MikroTik router works much
 better than using a consumer grade router in bridge mode. On an older ASUS
 RT-AC1900P (a variant of the popular RT-AC68U sold at Best Buy and other
 retailers), I was only getting about 25MB/s throughput. On the MikroTik, I
 could easily get near to over 100MB/s two floors away from my router. That is a
-huge difference, especially considering the HAP AC<sup>2</sup> does not have external
-wireless antennas!</p><h2 id=winbox-console>WinBox console</h2><p>Before proceeding, I recommend using Mikrotik&rsquo;s GUI tool WinBox to configure
+huge difference, especially considering the HAP AC<sup>2</sup> does not have
+external wireless antennas!</p><h2 id=winbox-console>WinBox console</h2><p>Before proceeding, I recommend using Mikrotik&rsquo;s GUI tool WinBox to configure
 the router. We will be using this tool as it allows configuring the router
 without it having any interfaces configured with an IP address.</p><p>To connect to your router, plug it in to the same switch as your computer, or
 directly into your computer&rsquo;s network port. Once that is done, open up WinBox
 and select the <strong>Neighbors</strong> tab.</p><p><img class=img-zoomable src=/img/WinBox-Neighbors.png alt="Winbox showing neighbors"></p><p>Once connected using Winbox, we will configure the router using the command
 line interface. This can be launched by selecting the <strong>New Terminal</strong> option
 in WinBox.</p><p><img class=img-zoomable src=/img/Winbox-terminal.png alt="Winbox terminal"></p><p>Inside this terminal, you will type in the below commands to configure the
-router.</p><h2 id=factory-resetting-the-router>Factory resetting the router</h2><p>I strongly recommend resetting the router to a default configuration by running
-the below command:</p><pre><code>[admin@MikroTik] &gt; /system reset-configuration no-defaults
+router.</p><h2 id=factory-resetting-the-router>Factory resetting the router</h2><p>The default configuration of a hAP ac<sup>2</sup> is set up to work as a SOHO
+router, with network address translation and other features enabled. This is
+not optimal for our use case, so we will need to factory reset this router to
+an empty configuration. You can reset the configuration of the router by
+running the below command:</p><pre><code>/system/reset-configuration no-defaults=yes
 Dangerous! Reset anyway? [y/N]: y
-</code></pre><p>This will reset the router to a default configuration that does not contain
-any sort of settings. This will make the configuration in the next steps a lot
+</code></pre><p>This will reset the router to an empty configuration with no interfaces
+configured. This will make the configuration in the following steps a lot
 easier.</p><p>Once the router reboots, connect to it again using WinBox the same way as
 before. If you had set an administrator password, it has likely been reset back
 to the default.</p><h2 id=create-a-bridge-interface>Create a bridge interface</h2><p>We will first need to configure a bridge. The bridge will link all interfaces
@@ -50,9 +56,10 @@ set [ find default-name=wlan1 ] band=2ghz-onlyn country=&quot;united states3&quo
 set [ find default-name=wlan2 ] band=5ghz-a/n/ac channel-width=20/40/80mhz-Ceee disabled=no frequency=auto mode=station-pseudobridge security-profile=profile1 ssid=&quot;MySSID&quot;
 </code></pre><p>I will be connecting over 5GHz, so I will be using wlan2, the 5GHz radio. It has
 been enabled, as <code>disabled=no</code> is set. The 2.4GHz radio is disabled in this
-configuration as 5GHz has better throughput, especially as we will be connecting
-using 802.11ac Wi-Fi. These settings are used for the United States, so you will
-probably want to change this to your country&rsquo;s <a href=https://networktik.com/mikrotik-frequency-modes/ target=_blank>regulatory domain</a>.</p><p><strong>One thing worth noting</strong>, MikroTik <a href=https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes#Mode_station-pseudobridge target=_blank>does not recommend</a> using the
+configuration as 5GHz offers better bandwidth, especially as we will be
+connecting using 802.11ac Wi-Fi. These settings are used for the United States,
+so you will probably want to change this to your country&rsquo;s
+<a href=https://networktik.com/mikrotik-frequency-modes/ target=_blank>regulatory domain</a>.</p><p><strong>One thing worth noting</strong>, MikroTik <a href=https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes#Mode_station-pseudobridge target=_blank>does not recommend</a> using the
 <code>station-psuedobridge</code> wireless mode as it does not support layer 2 bridging.
 MikroTik only supports L2 bridging if the access point the router is connecting
 to is also MikroTik. In my case, I&rsquo;m not using a MikroTik access point, so it is
