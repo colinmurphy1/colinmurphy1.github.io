@@ -22,8 +22,8 @@ more recent driver, causing the laptop to lose network access during
 deployments.
 
 I was able to resolve this issue by adding two additional steps to my task
-sequence: one that prevents Windows from replacing drivers, and another rule
-that reverts the change once the OS is installed.
+sequence: one that prevents Windows from checking Windows Update for drivers,
+and another rule that reverts the change once the OS is installed.
 
 To fix this, the first thing you will need to do is make sure that you are 
 *only* injecting drivers for the specfic model of computer you have. In the
@@ -37,14 +37,15 @@ a guide on [Spiceworks][0] that walks you through setting this up.
 
 Next, you'll want to add a Run Command Line step in the **PostInstall** stage
 right before the Next Phase and Restart Computer steps. The command you will
-need to run prevents Windows from replacing drivers by making a registry change.
+need to run makes a change in the Windows registry that prevents Windows from
+using Windows Update to look for drivers. (Source: [admx.help][1])
 
     reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig" /t REG_DWORD /d 0 /f
 
 ![MDT Prevent Driver replacements](/img/mdt_nodriverreplace.png)
 
 Finally, add one more step in the State Restore stage that reverts the previous
-registry change:
+registry change back to the default of 1.
 
     reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig" /t REG_DWORD /d 1 /f
 
@@ -55,3 +56,4 @@ You should no longer be getting any failed deployments that result in a cryptic,
 blank Wizard.hta window. Hope this helps!
 
 [0]:https://community.spiceworks.com/how_to/116865-add-drivers-to-mdt-all-versions-total-control-method
+[1]:https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DeviceSoftwareSetup::DriverSearchPlaces_SearchOrderConfiguration
