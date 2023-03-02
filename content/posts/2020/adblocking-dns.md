@@ -9,6 +9,7 @@ description: "How to set up a simple adblocking DNS server using dnsmasq and ad-
 authors: Colin
 aliases:
   - /posts/2020/02/creating-a-simple-adblocking-dns-server-using-dnsmasq/
+  - /posts/adblocking-dns/
 ---
 
 This guide will show you how to create a minimalistic adblocking DNS server. This is a great alternative to [Pi-Hole](https://pi-hole.net), which requires being run on a Raspberry Pi or in a Docker container.

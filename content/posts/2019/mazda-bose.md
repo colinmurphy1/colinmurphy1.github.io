@@ -7,6 +7,7 @@ date: 2019-05-20T00:00:00-06:00
 lastmod: 2020-08-06T00:00:00-06:00
 aliases:
   - /posts/2019/05/replacing-the-bose-amplifier-on-a-mazda3/
+  - /posts/mazda-bose/
 ---
 
 Shortly after buying my 2011 Mazda 3, my radio suddenly stopped producing sound. Aside from having no sound, the radio still worked fine as the in-car Bluetooth and all the buttons still operated as normal. After doing a little research online, I found out that the amplifier for the Bose sound system died. I also found out that and that Bose replaces the defective amplifiers for free!
