@@ -10,16 +10,17 @@ simply presented me with a blank Wizard.hta window.</p><p>After doing a little r
 some of the the drivers included with the Dell Command Deploy driver pack with a
 more recent driver, causing the laptop to lose network access during
 deployments.</p><p>I was able to resolve this issue by adding two additional steps to my task
-sequence: one that prevents Windows from replacing drivers, and another rule
-that reverts the change once the OS is installed.</p><p>To fix this, the first thing you will need to do is make sure that you are
+sequence: one that prevents Windows from checking Windows Update for drivers,
+and another rule that reverts the change once the OS is installed.</p><p>To fix this, the first thing you will need to do is make sure that you are
 <em>only</em> injecting drivers for the specfic model of computer you have. In the
 <strong>Inject Drivers</strong> step, you should set the Selection Profile to <code>Nothing</code>, and
 make sure <code>Install all drivers from the selection profile</code> is selected, like so:</p><p><img class=img-zoomable src=/img/mdt_injectdrivers.png alt="MDT Inject Drivers step"></p><p>This of course assumes that you have set the <code>DriverGroup001</code> variable. Here is
 a guide on <a href=https://community.spiceworks.com/how_to/116865-add-drivers-to-mdt-all-versions-total-control-method target=_blank>Spiceworks</a> that walks you through setting this up.</p><p>Next, you&rsquo;ll want to add a Run Command Line step in the <strong>PostInstall</strong> stage
 right before the Next Phase and Restart Computer steps. The command you will
-need to run prevents Windows from replacing drivers by making a registry change.</p><pre><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching&quot; /v &quot;SearchOrderConfig&quot; /t REG_DWORD /d 0 /f
+need to run makes a change in the Windows registry that prevents Windows from
+using Windows Update to look for drivers. (Source: <a href="https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DeviceSoftwareSetup::DriverSearchPlaces_SearchOrderConfiguration" target=_blank>admx.help</a>)</p><pre><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching&quot; /v &quot;SearchOrderConfig&quot; /t REG_DWORD /d 0 /f
 </code></pre><p><img class=img-zoomable src=/img/mdt_nodriverreplace.png alt="MDT Prevent Driver replacements"></p><p>Finally, add one more step in the State Restore stage that reverts the previous
-registry change:</p><pre><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching&quot; /v &quot;SearchOrderConfig&quot; /t REG_DWORD /d 1 /f
+registry change back to the default of 1.</p><pre><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching&quot; /v &quot;SearchOrderConfig&quot; /t REG_DWORD /d 1 /f
 </code></pre><p>Once done, save your task sequence. If you added any drivers, be sure to rebuild
 your deployment share, and replace the boot image in WDS if you PXE boot.</p><p>You should no longer be getting any failed deployments that result in a cryptic,
 blank Wizard.hta window. Hope this helps!</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>Pages</h3><ul><li><a href=/about>About</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>Links</h3><ul><li><a href=https://github.com/colinmurphy1/ target=_blank><span>GitHub</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>Tags</h3><div><span><a href=/tags/cars/>cars</a></span>
