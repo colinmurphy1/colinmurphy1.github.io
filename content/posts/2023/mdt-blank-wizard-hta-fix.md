@@ -6,6 +6,8 @@ description: "A guide on how to resolve an issue with the Microsoft Deployment T
 tags:
   - windows
   - microsoft deployment toolkit
+aliases:
+  - /posts/2023/03/how-to-fix-a-blank-wizard.hta-error-in-microsoft-deployment-toolkit/
 ---
 
 At work we use Microsoft Deployment Toolkit to automate the process of imaging

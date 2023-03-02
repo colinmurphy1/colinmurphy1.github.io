@@ -7,6 +7,8 @@ tags:
   - linux
   - wireguard
   - networking
+aliases:
+  - /posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/
 ---
 
 For a very long time, I have been using SSH tunneling to access my selfhosted

@@ -6,6 +6,8 @@ tags: ['linux', 'debian']
 keywords: ['linux', 'nvme ssd', 'debian nvme', 'linux nvme', 'booting linux off nvme']
 description: "How to boot Linux off an NVMe SSD on an unsupported computer."
 authors: Colin
+aliases:
+  - /posts/2020/09/booting-linux-off-an-nvme-ssd-on-an-older-computer/
 ---
 
 Most pre-2015 computers, like my HP Z230 workstation, are only able to boot off of SATA disks. While SATA SSDs are perfectly adequate for most workloads, I wanted to install my operating system on a much faster PCIe-based NVMe SSD.

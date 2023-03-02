@@ -6,6 +6,8 @@ description: "How to create a simple wireless bridge with a MikroTik router."
 tags:
   - networking
   - mikrotik
+aliases:
+  - /posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/
 ---
 
 I have some devices on my local network that are wired-only, or have unreliable
