@@ -1,5 +1,5 @@
 ---
-title: "How to fix a blank Wizard.hta error in Microsoft Deployment Toolkit"
+title: "How to fix deployments failing with a blank Wizard.hta in Microsoft Deployment Toolkit"
 date: 2023-03-01T20:03:51-06:00
 draft: false
 description: "A guide on how to resolve an issue with the Microsoft Deployment Toolkit where the deployment fails with a blank Wizard.hta screen"
