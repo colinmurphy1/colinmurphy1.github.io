@@ -28,7 +28,7 @@ sequence: one that prevents Windows from checking Windows Update for drivers,
 and another rule that reverts the change once the OS is installed.
 
 To fix this, the first thing you will need to do is make sure that you are 
-*only* injecting drivers for the specfic model of computer you have. In the
+*only* injecting drivers for the specific model of computer you have. In the
 **Inject Drivers** step, you should set the Selection Profile to `Nothing`, and
 make sure `Install all drivers from the selection profile` is selected, like so:
 
