@@ -18,6 +18,8 @@ injecting drivers during the imaging process, the install would suddenly fail
 after a reboot. It provided absolutely no error message on screen either; it
 simply presented me with a blank Wizard.hta window.
 
+<!--more-->
+
 After doing a little research on this issue, I found that Windows was replacing 
 some of the the drivers included with the Dell Command Deploy driver pack with a
 more recent driver, causing the laptop to lose network access during
