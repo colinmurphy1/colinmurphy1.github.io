@@ -1,0 +1,6 @@
+/* Remove terminal cursor */
+.logo__mark,
+.logo__cursor {
+    display: none;
+}
+

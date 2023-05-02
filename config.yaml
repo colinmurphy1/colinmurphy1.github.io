@@ -1,44 +1,37 @@
 baseURL: "https://colinmurphy.me/"
-title: "Colin Murphy's site"
-theme: "fuji"
-languageCode: "en-US"
-defaultContentLanguage: "en"
-paginate: 10
+theme: "hello-friend"
+paginate: 5
 enableRobotsTXT: true
 enableEmoji: true
-disableKinds: ["taxonomy"]
-ignoreErrors: ["error-disable-taxonomy"]
 
 permalinks:
   posts: "/:section/:year/:month/:filename"
 
-menu:
-  nav:
-    - name: "About"
-      url: "/about"  
-      weight: 10
-  link:
-    - name: "GitHub"
-      url: "https://github.com/colinmurphy1/"
-      weight: 10
-
 params:
-  # Fuji theme specific settings
-  # Settings pulled from https://github.com/dsrkafuu/hugo-theme-fuji/blob/master/exampleSite/config.toml
-  author: "Colin Murphy"
-  subTitle: "IT Guides and other stuff"
-  defaultTheme: "auto"
-  showToc: true
-  showComments: false
-  hideNoTagList: true
-  disableDarkImage: true # Images will not be dimmed with dark theme
+  showMenuItems: 2
+  showReadingTime: false
+  contentTypeName: "posts"
+    
 
-  # Show only main posts in homepage
-  mainSections: ["posts"]
+languages:
+  en:
+    title: "Colin Murphy's site"
+    subtitle: "IT Guides and other stuff"
+    copyright: "&copy; Colin Murphy"
+    logo:
+      logoText: "Colin Murphy's site"
+    menu:
+      main:
+        - identifier: "about"
+          name: "About"
+          url: "/about"
+          weight: 10
+        - identifier: "tags"
+          name: "Tags"
+          url: "/tags"
+          weight: 20
 
 markup:
   goldmark:
     renderer:
       unsafe: true # Allow HTML to be embedded in markdown pages
-  highlight:
-    codeFences: false # Disable Hugo syntax highlighting
