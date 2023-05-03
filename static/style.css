@@ -3,3 +3,8 @@
 .logo__cursor {
     display: none;
 }
+
+/* Remove some padding from the top of the footer */
+.footer {
+    padding: 0px 20px 40px 20px;
+}
