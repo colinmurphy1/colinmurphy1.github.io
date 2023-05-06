@@ -223,34 +223,8 @@ a.read-more:active {
   font-weight: bold; }
   .logo img {
     height: 44px; }
-  .logo__mark {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 5px; }
-    .logo__mark .greater-icon {
-      width: 0.95rem;
-      height: 100%; }
-      .logo__mark .greater-icon path {
-        stroke: currentColor;
-        stroke-width: 8px; }
   .logo__text {
     font-size: 1.125rem; }
-  .logo__cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1rem;
-    background: #fe5186;
-    margin-left: 5px;
-    border-radius: 1px;
-    animation: cursor 1s infinite; }
-
-@keyframes cursor {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
 
 .menu {
   --color: rgba(0, 0, 0, .12);
