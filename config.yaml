@@ -8,8 +8,12 @@ permalinks:
   posts: "/:section/:year/:month/:filename"
 
 params:
-  showMenuItems: 2
+  # Amount of menubar items to display
+  showMenuItems: 3
+
   showReadingTime: false
+
+  # The main folder containing blog posts
   contentTypeName: "posts"
     
 
@@ -25,11 +29,12 @@ languages:
         - identifier: "about"
           name: "About"
           url: "/about"
-          weight: 10
         - identifier: "tags"
           name: "Tags"
           url: "/tags"
-          weight: 20
+        - identifier: "archive"
+          name: "Archive"
+          url: "/archive"
 
 markup:
   goldmark:
