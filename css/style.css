@@ -232,7 +232,8 @@ a.read-more:active {
   border-right: 1px solid;
   margin-right: 18px;
   padding-right: 24px;
-  font-weight: 500; }
+  font-weight: 500;
+  /* Add underline on hover to header navigation links */ }
   @media (max-width: 684px) {
     .menu {
       position: absolute;
@@ -248,6 +249,8 @@ a.read-more:active {
       right: 10px; } }
   .menu a {
     text-decoration: none; }
+  .menu a:hover {
+    text-decoration: underline; }
   .menu__inner {
     display: flex;
     align-items: center;
@@ -600,7 +603,7 @@ h4:hover a {
     .post-cover img {
       margin: 0 auto;
       border-radius: 8px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); }
+      /*box-shadow: 0 12px 40px rgba(0, 0, 0, .15);*/ }
     @media (max-width: 900px) {
       .post-cover {
         margin: 20px 0;
@@ -780,6 +783,8 @@ h4:hover a {
       .archive__post-title a {
         display: block;
         text-decoration: none; }
+      .archive__post-title a:hover {
+        text-decoration: underline; }
 
 /* PrismJS 1.15.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+actionscript+apacheconf+applescript+c+csharp+bash+cpp+coffeescript+ruby+csp+css-extras+diff+django+docker+elixir+elm+markup-templating+erlang+fsharp+flow+git+go+graphql+less+handlebars+haskell+http+java+json+kotlin+latex+markdown+makefile+objectivec+ocaml+perl+php+php-extras+sql+processing+scss+python+jsx+typescript+reason+textile+rust+sass+stylus+scheme+pug+swift+yaml+haml+toml+twig+tsx+vim+visual-basic+wasm&plugins=line-numbers+toolbar+jsonp-highlight+command-line+copy-to-clipboard */
