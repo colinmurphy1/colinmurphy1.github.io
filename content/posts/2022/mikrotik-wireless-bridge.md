@@ -75,19 +75,23 @@ to the default.
 We will first need to configure a bridge. The bridge will link all interfaces
 on the device, including the two wireless radios on the hAP AC<sup>2</sup>.
 
-    /interface bridge
-    add name=bridge1
+```
+/interface bridge
+add name=bridge1
+```
 
 Next, let's add the interfaces:
 
-    /interface bridge port
-    add bridge=bridge1 interface=ether1
-    add bridge=bridge1 interface=ether2
-    add bridge=bridge1 interface=ether3
-    add bridge=bridge1 interface=ether4
-    add bridge=bridge1 interface=ether5
-    add bridge=bridge1 interface=wlan2
-    add bridge=bridge1 interface=wlan1
+```
+/interface bridge port
+add bridge=bridge1 interface=ether1
+add bridge=bridge1 interface=ether2
+add bridge=bridge1 interface=ether3
+add bridge=bridge1 interface=ether4
+add bridge=bridge1 interface=ether5
+add bridge=bridge1 interface=wlan2
+add bridge=bridge1 interface=wlan1
+```
 
 ## Enable DHCP on the bridge
 
@@ -96,8 +100,10 @@ DHCP enabled, the router will automatically get an IP address once it is
 connected to a wireless network. You'll use this IP address to manage the
 router if you ever need to make a configuration change.
 
-    /ip dhcp-client
-    add interface=bridge1
+```
+/ip dhcp-client
+add interface=bridge1
+```
 
 With the bridge interface configured, it is now time to set up a wireless
 profile so the router can connect to your wireless network.
@@ -106,17 +112,21 @@ profile so the router can connect to your wireless network.
 
 Create a wireless profile to use WPA2 encryption:
 
-    /interface wireless security-profiles
-    add authentication-types=wpa2-psk mode=dynamic-keys name=profile1 supplicant-identity="" wpa2-pre-shared-key="YourWifiPassword"
+```
+/interface wireless security-profiles
+add authentication-types=wpa2-psk mode=dynamic-keys name=profile1 supplicant-identity="" wpa2-pre-shared-key="YourWifiPassword"
+```
 
 You will need to add in your WPA2 pre shared key (password) above. 
 
 Next, we will configure the wireless interfaces to use your the security
 profile we created, and your SSID.
 
-    /interface wireless
-    set [ find default-name=wlan1 ] band=2ghz-onlyn country="united states3" frequency=auto installation=indoor mode=station-pseudobridge security-profile=profile1 ssid="MySSID"
-    set [ find default-name=wlan2 ] band=5ghz-a/n/ac channel-width=20/40/80mhz-Ceee disabled=no frequency=auto mode=station-pseudobridge security-profile=profile1 ssid="MySSID"
+```
+/interface wireless
+set [ find default-name=wlan1 ] band=2ghz-onlyn country="united states3" frequency=auto installation=indoor mode=station-pseudobridge security-profile=profile1 ssid="MySSID"
+set [ find default-name=wlan2 ] band=5ghz-a/n/ac channel-width=20/40/80mhz-Ceee disabled=no frequency=auto mode=station-pseudobridge security-profile=profile1 ssid="MySSID"
+```
 
 I will be connecting over 5GHz, so I will be using wlan2, the 5GHz radio. It has
 been enabled, as `disabled=no` is set. The 2.4GHz radio is disabled in this 
@@ -136,14 +146,16 @@ and it still uses a bridge and no NAT, I'm all ears! 😉
 
 Next, let's disable some unnecessary services to secure the router:
 
-    /ip service
-    set telnet disabled=yes
-    set ftp disabled=yes
-    set api disabled=yes
-    set api-ssl disabled=yes
+```
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set api disabled=yes
+set api-ssl disabled=yes
 
-    /tool bandwidth-server
-    set enabled=no
+/tool bandwidth-server
+set enabled=no
+```
 
 This will leave only the HTTP, SSH, and WinBox services enabled improving the
 security of the router a bit.
@@ -153,51 +165,57 @@ security of the router a bit.
 Finally, we will configure the timezone. This is not necessary, but is useful if
 you will check the logs of the router.
 
-    /system clock
-    set time-zone-name=America/Chicago
+```
+/system clock
+set time-zone-name=America/Chicago
+```
 
 An optional feature you may find useful is to enable the usr led. This led can
 be configured to blink if there is any wireless network activity using the
 below command:
 
-    /system leds
-    add interface=wlan2 leds=user-led type=wireless-status
+```
+/system leds
+add interface=wlan2 leds=user-led type=wireless-status
+```
 
 ## Full configuration
 
 For reference, here is the full configuration of the router:
 
-    /interface bridge
-    add name=bridge1
-    /interface wireless security-profiles
-    set [ find default=yes ] supplicant-identity=MikroTik
-    add authentication-types=wpa2-psk mode=dynamic-keys name=profile1 supplicant-identity="" wpa2-pre-shared-key="YourWifiPassword"
-    /interface wireless
-    set [ find default-name=wlan1 ] band=2ghz-onlyn country="united states3" frequency=auto installation=indoor mode=\
-        station-pseudobridge security-profile=profile1 ssid="MySSID"
-    set [ find default-name=wlan2 ] band=5ghz-a/n/ac channel-width=20/40/80mhz-Ceee disabled=no frequency=auto mode=\
-        station-pseudobridge security-profile=profile1 ssid="MySSID"
-    /interface bridge port
-    add bridge=bridge1 interface=ether1
-    add bridge=bridge1 interface=ether2
-    add bridge=bridge1 interface=ether3
-    add bridge=bridge1 interface=ether4
-    add bridge=bridge1 interface=ether5
-    add bridge=bridge1 interface=wlan2
-    add bridge=bridge1 interface=wlan1
-    /ip dhcp-client
-    add interface=bridge1
-    /ip service
-    set telnet disabled=yes
-    set ftp disabled=yes
-    set api disabled=yes
-    set api-ssl disabled=yes
-    /system clock
-    set time-zone-name=America/Chicago
-    /system leds
-    add interface=wlan2 leds=user-led type=wireless-status
-    /tool bandwidth-server
-    set enabled=no
+```
+/interface bridge
+add name=bridge1
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+add authentication-types=wpa2-psk mode=dynamic-keys name=profile1 supplicant-identity="" wpa2-pre-shared-key="YourWifiPassword"
+/interface wireless
+set [ find default-name=wlan1 ] band=2ghz-onlyn country="united states3" frequency=auto installation=indoor mode=\
+    station-pseudobridge security-profile=profile1 ssid="MySSID"
+set [ find default-name=wlan2 ] band=5ghz-a/n/ac channel-width=20/40/80mhz-Ceee disabled=no frequency=auto mode=\
+    station-pseudobridge security-profile=profile1 ssid="MySSID"
+/interface bridge port
+add bridge=bridge1 interface=ether1
+add bridge=bridge1 interface=ether2
+add bridge=bridge1 interface=ether3
+add bridge=bridge1 interface=ether4
+add bridge=bridge1 interface=ether5
+add bridge=bridge1 interface=wlan2
+add bridge=bridge1 interface=wlan1
+/ip dhcp-client
+add interface=bridge1
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set api disabled=yes
+set api-ssl disabled=yes
+/system clock
+set time-zone-name=America/Chicago
+/system leds
+add interface=wlan2 leds=user-led type=wireless-status
+/tool bandwidth-server
+set enabled=no
+```
 
 [0]:https://networktik.com/mikrotik-frequency-modes/
 [1]:https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes#Mode_station-pseudobridge

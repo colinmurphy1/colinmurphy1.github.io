@@ -27,14 +27,16 @@ Next, I created a root partition and my other partitions (`/home`, etc) on the N
 
 For reference, my final partition layout looks like this:
 
-    colin@z230:~$ lsblk
-    NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-    sdb           8:16   0 111.8G  0 disk
-    ├─sdb1        8:17   0    94M  0 part /boot/efi
-    ├─sdb2        8:18   0   238M  0 part /boot
-    └─sdb3        8:19   0   7.5G  0 part [SWAP]
-    nvme0n1     259:0    0 238.5G  0 disk
-    ├─nvme0n1p1 259:1    0  59.6G  0 part /
-    └─nvme0n1p2 259:2    0 178.9G  0 part /home
+```
+colin@z230:~$ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sdb           8:16   0 111.8G  0 disk
+├─sdb1        8:17   0    94M  0 part /boot/efi
+├─sdb2        8:18   0   238M  0 part /boot
+└─sdb3        8:19   0   7.5G  0 part [SWAP]
+nvme0n1     259:0    0 238.5G  0 disk
+├─nvme0n1p1 259:1    0  59.6G  0 part /
+└─nvme0n1p2 259:2    0 178.9G  0 part /home
+```
 
 That is all you need to do. When the installation is complete, you should see the bootloader screen like you would on a traditional install. 

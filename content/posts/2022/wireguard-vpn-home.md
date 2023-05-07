@@ -7,6 +7,7 @@ tags:
   - linux
   - wireguard
   - networking
+  - vpn
 aliases:
   - /posts/2022/12/access-your-local-network-from-anywhere-with-wireguard-vpn/
 ---
@@ -35,10 +36,9 @@ The first step to setting up a WireGuard is ensuring you have WireGuard
 installed and available to use. On Ubuntu, this can be done by running the
 following command:
 
-{{< highlight bash >}}
+```bash
 sudo apt install wireguard
-{{</ highlight >}}
-
+```
 
 Now that WireGuard is installed, we will need to create a key for both peers:
 the client and server.
@@ -47,10 +47,10 @@ the client and server.
 
 The following commands will generate a public and private key for each peer.
 
-{{< highlight bash >}}
+```bash
 wg genkey | (umask 0077 && tee server.key) | wg pubkey > server.pub
 wg genkey | (umask 0077 && tee peer1.key) | wg pubkey > peer1.pub
-{{</ highlight >}}
+```
 
 You should now see a .key and .pub for both server and peer1. The .key will be
 the private key, and .pub the public key. 
@@ -63,9 +63,9 @@ interface.
 
 To do this, run these commands:
 
-{{< highlight bash >}}
+```bash
 sysctl net.ipv4.ip_forward=1
-{{</ highlight >}}
+```
 
 IPv4 forwarding is now enabled, but this is not a persistent configuration
 change. To make this change persistent, you will need to edit the sysctl
@@ -80,14 +80,14 @@ The configuration change will now apply on each boot.
 
 Create the configuration folder and file:
 
-{{< highlight bash >}}
+```bash
 mkdir /etc/wireguard
 vim /etc/wireguard/wg0.conf
-{{</ highlight >}}
+```
 
 Inside of `wg0.conf`, add the following lines:
 
-{{< highlight ini >}}
+```ini
 [Interface]
 Address = 192.168.99.1/24
 ListenPort = 51820
@@ -98,7 +98,7 @@ PostDown = iptables -D FORWARD -i br0 -o %i -j ACCEPT; iptables -D FORWARD -i %i
 [Peer]
 PublicKey = Peer1 public key
 AllowedIPs = 192.168.99.2/32
-{{</ highlight >}}
+```
 
 Replace `br0` with the network interface that connects to your LAN. In most
 cases, this will be `eth0` or something along the lines of `enp1s0`. Use the
@@ -111,7 +111,7 @@ file.
 
 This file will work as a configuration for the client:
 
-{{< highlight ini >}}
+```ini
 [Interface]
 PrivateKey = Peer1 private key
 Address = 192.168.99.2/32 
@@ -120,7 +120,7 @@ Address = 192.168.99.2/32
 PublicKey = SERVER public key
 AllowedIPs = 192.168.99.0/24, 192.168.1.0/24
 Endpoint = SERVER:51820
-{{</ highlight >}}
+```
 
 Add in the private key for the client (Peer1) under Interface, and the public
 key of the server under Peer.
@@ -145,17 +145,17 @@ start WireGuard on each peer.
 On the server, I'll use `wg-quick` to quickly bring up the interface, and then
 run the `wg` command to verify it is running:
 
-{{< highlight bash >}}
+```bash
 wg-quick up /etc/wireguard/wg0.conf
 wg
-{{</ highlight >}}
+```
 
 To make the WireGuard interface start upon boot, you can enable the systemd
 service for it:
 
-{{< highlight bash >}}
+```bash
 systemctl enable wg-quick@wg0
-{{</ highlight >}}
+```
 
 For my client, I am using the WireGuard Windows application. To configure it,
 you will need to the generated configuration into it, and add in the keys
