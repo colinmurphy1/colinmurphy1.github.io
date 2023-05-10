@@ -8,6 +8,7 @@ tags:
   - proxmox
   - homelab
   - vpn
+  - wireguard
 cover: /img/pivpn-logo.png
 ---
 
