@@ -78,34 +78,23 @@ and click on the unused disk. Set the Bus/Device to `SCSI 0`, and then select
   caption="Configuring the virtual disk on Proxmox VE"
   position="center" >}}
 
-Once you have added the disk to the virtual machine, we are now ready to power
-the virtual machine. Be sure to start a remote console to the VM as we will need
-to adjust some settings in the VM's UEFI firmware/BIOS.
-
-After powering the virtual machine on, immediately press the <kbd>Esc</kbd> key
-on your keyboard to bring up the boot menu. We will need to adjust the boot
-order so the VM will boot into our Home Assistant OS disk first.
-
-To change the VM's boot order, go to **Boot Maintenance Manager** >
-**Boot Options** > **Change Boot Order**. Use the + key to move
-`UEFI QEMU QEMU HARDDISK` to be the first option, and then press
-<kbd>Enter</kbd> to save.
+Next, we will need to configure the boot order of this virtual machine so it
+will boot from our downloaded disk image. To configure the boot order, go to the
+**Options** tab in the virtual machine settings, and click on the **Boot Order**
+option. Check the box next to the `scsi0` disk, and then uncheck the virtual
+CD-ROM and network boot options. Click **OK**. 
 
 {{< figure
   src="/img/proxmox-home-assistant-boot-order.png"
-  alt="Adjusting the boot order in our virtual machine"
-  caption="Adjusting the boot order in our virtual machine"
+  alt="Changing the boot order the virtual machine options"
+  caption="Changing the boot order the virtual machine options"
   position="center" >}}
 
-
-Finally, we'll need to save our changes by selecting and pressing <kbd>Enter</kbd>
-on **Commit Changes and Exit**. Keep going back through the menus by hitting 
-the `Esc` key until you can continue booting normally. Home Assistant OS should
-now finish booting.
-
-Once Home Assistant finishes booting, it will request an IP address through
-DHCP and then provide you with a network address you can go to to finish setting
-up the virtual appliance.
+Once the boot order is configured, we are now ready to power on the VM. Power
+on the virtual machine, and then open up a console window. You should see the
+operating system boot, and after a short while, you will be presented with the
+IP address of your Home Assistant instance. You may now navigate to this address
+and begin setting up Home Assistant to your environment. 
 
 [hass]:https://www.home-assistant.io/installation/
 [hassvm]:https://www.home-assistant.io/installation/linux
