@@ -31,17 +31,13 @@ your datastore in Proxmox. In my case, I named it SSD.
 </span></span></code></pre></div><p>Once the qcow2 image is imported into the VM, we will need to set the bus/device
 for the virtual hard disk. This can be done by going to the <strong>Hardware</strong> tab,
 and click on the unused disk. Set the Bus/Device to <code>SCSI 0</code>, and then select
-<strong>Add</strong>.</p><figure class=center><img src=/img/proxmox-home-assistant-disk.png alt="Configuring the virtual disk on Proxmox VE"><figcaption class=center>Configuring the virtual disk on Proxmox VE</figcaption></figure><p>Once you have added the disk to the virtual machine, we are now ready to power
-the virtual machine. Be sure to start a remote console to the VM as we will need
-to adjust some settings in the VM&rsquo;s UEFI firmware/BIOS.</p><p>After powering the virtual machine on, immediately press the <kbd>Esc</kbd> key
-on your keyboard to bring up the boot menu. We will need to adjust the boot
-order so the VM will boot into our Home Assistant OS disk first.</p><p>To change the VM&rsquo;s boot order, go to <strong>Boot Maintenance Manager</strong> >
-<strong>Boot Options</strong> > <strong>Change Boot Order</strong>. Use the + key to move
-<code>UEFI QEMU QEMU HARDDISK</code> to be the first option, and then press
-<kbd>Enter</kbd> to save.</p><figure class=center><img src=/img/proxmox-home-assistant-boot-order.png alt="Adjusting the boot order in our virtual machine"><figcaption class=center>Adjusting the boot order in our virtual machine</figcaption></figure><p>Finally, we&rsquo;ll need to save our changes by selecting and pressing <kbd>Enter</kbd>
-on <strong>Commit Changes and Exit</strong>. Keep going back through the menus by hitting
-the <code>Esc</code> key until you can continue booting normally. Home Assistant OS should
-now finish booting.</p><p>Once Home Assistant finishes booting, it will request an IP address through
-DHCP and then provide you with a network address you can go to to finish setting
-up the virtual appliance.</p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button next"><a href=https://colinmurphy.me/posts/2023/05/pivpn-proxmox-lxc/><span class=button__text>Installing PiVPN on an unprivileged Proxmox LXC Container</span>
+<strong>Add</strong>.</p><figure class=center><img src=/img/proxmox-home-assistant-disk.png alt="Configuring the virtual disk on Proxmox VE"><figcaption class=center>Configuring the virtual disk on Proxmox VE</figcaption></figure><p>Next, we will need to configure the boot order of this virtual machine so it
+will boot from our downloaded disk image. To configure the boot order, go to the
+<strong>Options</strong> tab in the virtual machine settings, and click on the <strong>Boot Order</strong>
+option. Check the box next to the <code>scsi0</code> disk, and then uncheck the virtual
+CD-ROM and network boot options. Click <strong>OK</strong>.</p><figure class=center><img src=/img/proxmox-home-assistant-boot-order.png alt="Changing the boot order the virtual machine options"><figcaption class=center>Changing the boot order the virtual machine options</figcaption></figure><p>Once the boot order is configured, we are now ready to power on the VM. Power
+on the virtual machine, and then open up a console window. You should see the
+operating system boot, and after a short while, you will be presented with the
+IP address of your Home Assistant instance. You may now navigate to this address
+and begin setting up Home Assistant to your environment.</p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button next"><a href=https://colinmurphy.me/posts/2023/05/pivpn-proxmox-lxc/><span class=button__text>Installing PiVPN on an unprivileged Proxmox LXC Container</span>
 <span class=button__icon>→</span></a></span></div></div></article></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user">&copy; Colin Murphy</div></div></footer><script type=text/javascript src=/bundle.min.js></script></div></body></html>
