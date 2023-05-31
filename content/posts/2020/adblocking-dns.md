@@ -3,7 +3,6 @@ title: 'Creating a simple adblocking DNS server using dnsmasq'
 date: '2020-02-01T00:00:00-06:00'
 draft: false
 tags: ['linux', 'networking']
-categories: ['notes']
 keywords: ['adblock', 'adblocking dns server', 'dns server']
 description: "How to set up a simple adblocking DNS server using dnsmasq and ad-blocking utilities."
 authors: Colin

@@ -8,11 +8,14 @@ tags:
   - mikrotik
 aliases:
   - /posts/2022/12/creating-a-wireless-bridge-using-a-mikrotik-router/
+cover: "/img/hap-ac2-cropped.jpg"
+coverAlt: "MikroTik hAP ac2 router, photo by Uhernandez on Wikimedia Commons."
+coverCaption: "<em>Image credits: Uhernandez, Wikimedia Commons</em>"
 ---
 
 I have some devices on my local network that are wired-only, or have unreliable
 Wi-Fi. Instead of running ethernet to the room that contains these devices,
-I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup>
+I opted to create a wireless bridge using a MikroTik hAP ac<sup>2</sup>
 wireless router I had lying around. When configured as a wireless bridge, the
 MikroTik router will connect a wired network to a wireless network.
 
@@ -27,7 +30,7 @@ better than using a consumer grade router in bridge mode. On an older ASUS
 RT-AC1900P (a variant of the popular RT-AC68U sold at Best Buy and other
 retailers), I was only getting about 25MB/s throughput. On the MikroTik, I
 could easily get near to over 100MB/s two floors away from my router. That is a
-huge difference, especially considering the HAP AC<sup>2</sup> does not have
+huge difference, especially considering the HAP ac<sup>2</sup> does not have
 external wireless antennas!
 
 ## WinBox console
@@ -73,7 +76,7 @@ to the default.
 ## Create a bridge interface
 
 We will first need to configure a bridge. The bridge will link all interfaces
-on the device, including the two wireless radios on the hAP AC<sup>2</sup>.
+on the device, including the two wireless radios on the hAP ac<sup>2</sup>.
 
 ```
 /interface bridge
