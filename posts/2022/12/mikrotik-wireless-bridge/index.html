@@ -1,10 +1,7 @@
-<!doctype html><html lang=en><head><title>Creating a wireless bridge using a MikroTik router ::
-Colin Murphy's site — IT Guides and other stuff</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="I have some devices on my local network that are wired-only, or have unreliable Wi-Fi. Instead of running ethernet to the room that contains these devices, I opted to create a wireless bridge using a MikroTik hAP AC2 wireless router I had lying around. When configured as a wireless bridge, the MikroTik router will connect a wired network to a wireless network.
-Additionally, as this works as a bridge, there is no sort of NAT (network address translation) running, so it will appear on the same network as the rest of your devices."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://colinmurphy.me/posts/2022/12/mikrotik-wireless-bridge/><link rel=stylesheet href=/css/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://colinmurphy.me/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://colinmurphy.me/img/favicon.png><link href=/fonts/Inter-Italic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/fonts/Inter-Regular.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/fonts/Inter-Medium.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/fonts/Inter-MediumItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/fonts/Inter-Bold.woff2 rel=preload type=font/woff2 as=font crossorigin><link href=/fonts/Inter-BoldItalic.woff2 rel=preload type=font/woff2 as=font crossorigin><meta name=twitter:card content="summary"><meta name=twitter:title content="Creating a wireless bridge using a MikroTik router"><meta name=twitter:description content="How to create a simple wireless bridge with a MikroTik router."><meta property="og:title" content="Creating a wireless bridge using a MikroTik router"><meta property="og:description" content="How to create a simple wireless bridge with a MikroTik router."><meta property="og:type" content="article"><meta property="og:url" content="https://colinmurphy.me/posts/2022/12/mikrotik-wireless-bridge/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-29T12:17:12-06:00"><meta property="article:modified_time" content="2022-12-29T12:17:12-06:00"><meta property="og:site_name" content="Colin Murphy's site"></head><body><div class=container><header class=header><span class=header__inner><a href=https://colinmurphy.me/ class=logo style=text-decoration:none><span class=logo__text>Colin Murphy's site</span></a>
-<span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/about>About</a></li><li><a href=/archive>Archive</a></li><li><a href=/tags>Tags</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/about>About</a></li><li><a href=/archive>Archive</a></li><li><a href=/tags>Tags</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><article class=post><h1 class=post-title>Creating a wireless bridge using a MikroTik router</h1><div class=post-meta><time class=post-date>2022-12-29</time></div><span class=post-tags><a href=https://colinmurphy.me/tags/networking/>#networking</a>&nbsp;
-<a href=https://colinmurphy.me/tags/mikrotik/>#mikrotik</a>&nbsp;</span><div class=post-content><p>I have some devices on my local network that are wired-only, or have unreliable
+<!doctype html><html lang=en><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Creating a wireless bridge using a MikroTik router | Colin Murphy's site</title><meta name=description content="How to create a simple wireless bridge with a MikroTik router."><meta property="og:title" content="Creating a wireless bridge using a MikroTik router"><meta property="og:description" content="How to create a simple wireless bridge with a MikroTik router."><meta property="og:type" content="article"><meta property="og:url" content="https://colinmurphy.me/posts/2022/12/mikrotik-wireless-bridge/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-29T12:17:12-06:00"><meta property="article:modified_time" content="2022-12-29T12:17:12-06:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Creating a wireless bridge using a MikroTik router"><meta name=twitter:description content="How to create a simple wireless bridge with a MikroTik router."><meta itemprop=name content="Creating a wireless bridge using a MikroTik router"><meta itemprop=description content="How to create a simple wireless bridge with a MikroTik router."><meta itemprop=datePublished content="2022-12-29T12:17:12-06:00"><meta itemprop=dateModified content="2022-12-29T12:17:12-06:00"><meta itemprop=wordCount content="1038"><meta itemprop=keywords content="networking,mikrotik,"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Hanken+Grotesk:ital,wght@0,400;0,600;1,400&display=swap" rel=stylesheet><link rel="shortcut icon" href=https://colinmurphy.me/img/favicon.png><link rel=stylesheet href=https://colinmurphy.me/css/style.css><noscript><style>header nav.hidden-mobile{display:flex!important}header .nav-button{display:none!important}</style></noscript><body><div class=container><header class=site-header><div class=nav-left><div class=site-title><a href=https://colinmurphy.me/>Colin Murphy's site</a></div><div class=nav-button>&#9776; Menu</div></div><nav class=hidden-mobile><a href=https://colinmurphy.me/about>About</a></nav></header><main id=content><article><header><h1>Creating a wireless bridge using a MikroTik router</h1><div class=post-meta><time>December 29, 2022</time><div class=tags><a href=https://colinmurphy.me/tags/networking/>networking</a>
+<a href=https://colinmurphy.me/tags/mikrotik/>mikrotik</a></div></div></header><figure class=post-cover><img src=https://colinmurphy.me/img/hap-ac2-cropped.jpg alt="MikroTik hAP ac2 router, photo by Uhernandez on Wikimedia Commons."><figcaption class=center><em>Image credits: Uhernandez, Wikimedia Commons</em></figcaption></figure><p>I have some devices on my local network that are wired-only, or have unreliable
 Wi-Fi. Instead of running ethernet to the room that contains these devices,
-I opted to create a wireless bridge using a MikroTik hAP AC<sup>2</sup>
+I opted to create a wireless bridge using a MikroTik hAP ac<sup>2</sup>
 wireless router I had lying around. When configured as a wireless bridge, the
 MikroTik router will connect a wired network to a wireless network.</p><p>Additionally, as this works as a bridge, there is no sort of NAT (network
 address translation) running, so it will appear on the same network as the rest
@@ -15,17 +12,15 @@ better than using a consumer grade router in bridge mode. On an older ASUS
 RT-AC1900P (a variant of the popular RT-AC68U sold at Best Buy and other
 retailers), I was only getting about 25MB/s throughput. On the MikroTik, I
 could easily get near to over 100MB/s two floors away from my router. That is a
-huge difference, especially considering the HAP AC<sup>2</sup> does not have
-external wireless antennas!</p><h2 id=winbox-console>WinBox console
-<a href=#winbox-console class=h-anchor aria-hidden=true>#</a></h2><p>Before proceeding, I recommend using Mikrotik&rsquo;s GUI tool WinBox to configure
+huge difference, especially considering the HAP ac<sup>2</sup> does not have
+external wireless antennas!</p><h2 id=winbox-console>WinBox console</h2><p>Before proceeding, I recommend using Mikrotik&rsquo;s GUI tool WinBox to configure
 the router. We will be using this tool as it allows configuring the router
 without it having any interfaces configured with an IP address.</p><p>To connect to your router, plug it in to the same switch as your computer, or
 directly into your computer&rsquo;s network port. Once that is done, open up WinBox
 and select the <strong>Neighbors</strong> tab.</p><p><img src=/img/WinBox-Neighbors.png alt="Winbox showing neighbors"></p><p>Once connected using Winbox, we will configure the router using the command
 line interface. This can be launched by selecting the <strong>New Terminal</strong> option
 in WinBox.</p><p><img src=/img/Winbox-terminal.png alt="Winbox terminal"></p><p>Inside this terminal, you will type in the below commands to configure the
-router.</p><h2 id=factory-resetting-the-router>Factory resetting the router
-<a href=#factory-resetting-the-router class=h-anchor aria-hidden=true>#</a></h2><p>The default configuration of a hAP ac<sup>2</sup> is set up to work as a SOHO
+router.</p><h2 id=factory-resetting-the-router>Factory resetting the router</h2><p>The default configuration of a hAP ac<sup>2</sup> is set up to work as a SOHO
 router, with network address translation and other features enabled. This is
 not optimal for our use case, so we will need to factory reset this router to
 an empty configuration. You can reset the configuration of the router by
@@ -35,9 +30,8 @@ Dangerous! Reset anyway? [y/N]: y
 configured. This will make the configuration in the following steps a lot
 easier.</p><p>Once the router reboots, connect to it again using WinBox the same way as
 before. If you had set an administrator password, it has likely been reset back
-to the default.</p><h2 id=create-a-bridge-interface>Create a bridge interface
-<a href=#create-a-bridge-interface class=h-anchor aria-hidden=true>#</a></h2><p>We will first need to configure a bridge. The bridge will link all interfaces
-on the device, including the two wireless radios on the hAP AC<sup>2</sup>.</p><pre tabindex=0><code>/interface bridge
+to the default.</p><h2 id=create-a-bridge-interface>Create a bridge interface</h2><p>We will first need to configure a bridge. The bridge will link all interfaces
+on the device, including the two wireless radios on the hAP ac<sup>2</sup>.</p><pre tabindex=0><code>/interface bridge
 add name=bridge1
 </code></pre><p>Next, let&rsquo;s add the interfaces:</p><pre tabindex=0><code>/interface bridge port
 add bridge=bridge1 interface=ether1
@@ -47,15 +41,13 @@ add bridge=bridge1 interface=ether4
 add bridge=bridge1 interface=ether5
 add bridge=bridge1 interface=wlan2
 add bridge=bridge1 interface=wlan1
-</code></pre><h2 id=enable-dhcp-on-the-bridge>Enable DHCP on the bridge
-<a href=#enable-dhcp-on-the-bridge class=h-anchor aria-hidden=true>#</a></h2><p>The next step is to enable the DHCP client on the <code>bridge1</code> interface. With
+</code></pre><h2 id=enable-dhcp-on-the-bridge>Enable DHCP on the bridge</h2><p>The next step is to enable the DHCP client on the <code>bridge1</code> interface. With
 DHCP enabled, the router will automatically get an IP address once it is
 connected to a wireless network. You&rsquo;ll use this IP address to manage the
 router if you ever need to make a configuration change.</p><pre tabindex=0><code>/ip dhcp-client
 add interface=bridge1
 </code></pre><p>With the bridge interface configured, it is now time to set up a wireless
-profile so the router can connect to your wireless network.</p><h2 id=configure-wireless-profiles>Configure wireless profiles
-<a href=#configure-wireless-profiles class=h-anchor aria-hidden=true>#</a></h2><p>Create a wireless profile to use WPA2 encryption:</p><pre tabindex=0><code>/interface wireless security-profiles
+profile so the router can connect to your wireless network.</p><h2 id=configure-wireless-profiles>Configure wireless profiles</h2><p>Create a wireless profile to use WPA2 encryption:</p><pre tabindex=0><code>/interface wireless security-profiles
 add authentication-types=wpa2-psk mode=dynamic-keys name=profile1 supplicant-identity=&#34;&#34; wpa2-pre-shared-key=&#34;YourWifiPassword&#34;
 </code></pre><p>You will need to add in your WPA2 pre shared key (password) above.</p><p>Next, we will configure the wireless interfaces to use your the security
 profile we created, and your SSID.</p><pre tabindex=0><code>/interface wireless
@@ -71,8 +63,7 @@ so you will probably want to change this to your country&rsquo;s
 MikroTik only supports L2 bridging if the access point the router is connecting
 to is also MikroTik. In my case, I&rsquo;m not using a MikroTik access point, so it is
 fine to use this mode. If any MikroTik gurus know of a better way to do this
-and it still uses a bridge and no NAT, I&rsquo;m all ears! 😉</p><h2 id=disable-unnecessary-services>Disable unnecessary services
-<a href=#disable-unnecessary-services class=h-anchor aria-hidden=true>#</a></h2><p>Next, let&rsquo;s disable some unnecessary services to secure the router:</p><pre tabindex=0><code>/ip service
+and it still uses a bridge and no NAT, I&rsquo;m all ears! 😉</p><h2 id=disable-unnecessary-services>Disable unnecessary services</h2><p>Next, let&rsquo;s disable some unnecessary services to secure the router:</p><pre tabindex=0><code>/ip service
 set telnet disabled=yes
 set ftp disabled=yes
 set api disabled=yes
@@ -81,16 +72,14 @@ set api-ssl disabled=yes
 /tool bandwidth-server
 set enabled=no
 </code></pre><p>This will leave only the HTTP, SSH, and WinBox services enabled improving the
-security of the router a bit.</p><h2 id=finishing-touches>Finishing touches
-<a href=#finishing-touches class=h-anchor aria-hidden=true>#</a></h2><p>Finally, we will configure the timezone. This is not necessary, but is useful if
+security of the router a bit.</p><h2 id=finishing-touches>Finishing touches</h2><p>Finally, we will configure the timezone. This is not necessary, but is useful if
 you will check the logs of the router.</p><pre tabindex=0><code>/system clock
 set time-zone-name=America/Chicago
 </code></pre><p>An optional feature you may find useful is to enable the usr led. This led can
 be configured to blink if there is any wireless network activity using the
 below command:</p><pre tabindex=0><code>/system leds
 add interface=wlan2 leds=user-led type=wireless-status
-</code></pre><h2 id=full-configuration>Full configuration
-<a href=#full-configuration class=h-anchor aria-hidden=true>#</a></h2><p>For reference, here is the full configuration of the router:</p><pre tabindex=0><code>/interface bridge
+</code></pre><h2 id=full-configuration>Full configuration</h2><p>For reference, here is the full configuration of the router:</p><pre tabindex=0><code>/interface bridge
 add name=bridge1
 /interface wireless security-profiles
 set [ find default=yes ] supplicant-identity=MikroTik
@@ -121,7 +110,4 @@ set time-zone-name=America/Chicago
 add interface=wlan2 leds=user-led type=wireless-status
 /tool bandwidth-server
 set enabled=no
-</code></pre></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://colinmurphy.me/posts/2023/05/pivpn-proxmox-lxc/><span class=button__icon>←</span>
-<span class=button__text>Installing PiVPN on an unprivileged Proxmox LXC Container</span></a></span>
-<span class="button next"><a href=https://colinmurphy.me/posts/2022/12/wireguard-vpn-home/><span class=button__text>Access your local network from anywhere with WireGuard VPN</span>
-<span class=button__icon>→</span></a></span></div></div></article></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user">&copy; Colin Murphy</div></div></footer><script type=text/javascript src=/bundle.min.js></script></div></body></html>
+</code></pre></article></main><footer><div class=copyright>© 2023 Colin Murphy</div></footer></div><script>const navButton=document.querySelector(".nav-button"),navLinks=document.querySelector("header nav");navButton.addEventListener("click",()=>navLinks.classList.toggle("hidden-mobile"))</script></body></html>
