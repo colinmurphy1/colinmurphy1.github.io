@@ -1,0 +1,313 @@
+/* Light theme */
+:root {
+    --bg-color: #fafafa;
+    --bg-alt-color: #eeeeee;
+    --text-color: #212121;
+    --text-bold-color: #000000;
+    --link-color: #1565c0;
+    --border-color: #ff8902;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+:root {
+    --bg-color: #212121;
+    --bg-alt-color: #111111;
+    --text-color: #dadada;
+    --text-bold-color: #fff;
+    --link-color: #55acf2;
+    --border-color: #ff8902;
+}
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Hanken Grotesk', sans-serif;
+    margin: 2rem;
+    line-height: 1.8em;
+    font-size: 18px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/*      T Y P O G R A P H Y      */
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 1em 0;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* H4-H6 use the same styling */
+h4, h5, h6 {
+    font-size: inherit;
+}
+
+/* Paragraphs */
+
+p {
+    margin: 1em 0;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: 0.2s color ease-in;
+}
+a:hover,
+a:active {
+    text-decoration: underline;
+}
+
+/* Give most typography elements 2em margins */
+pre, blockquote, figure {
+    margin: 2em 0;
+}
+
+/* Code Blocks */
+pre {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    background-color: var(--bg-alt-color);
+    border-left: solid 2px var(--link-color);
+    overflow: auto;
+}
+
+pre, code {
+    font-family: 'Fira Code', 'Consolas', 'Menlo', 'Monaco', monospace;
+    line-height: normal;
+}
+
+code {
+    font-size: 0.8em;
+}
+
+/* Blockquote */
+blockquote {
+    padding: 0.5em 1em;
+    border-left: solid 2px var(--border-color);
+    background-color: var(--bg-alt-color);
+}
+blockquote p {
+    margin: 0.25em 0;
+    color: var(--text-bold-color);
+}
+blockquote > cite {
+    font-size: 0.9rem;
+    color: inherit;
+}
+
+/* Pre, Blockquote, Figure tags go slightly out of main content area on desktop */
+@media screen and (min-width: 800px) {
+    pre, blockquote, figure {
+        margin-left: -2em;
+        margin-right: -2em;
+    }
+}
+
+/* Lists */
+article ul, 
+article ol {
+    margin-left: 2em;
+    padding: 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+
+figcaption {
+    font-size: 1rem;
+}
+
+time { font-style: italic; }
+
+.center {
+    text-align: center;
+}
+
+/*      END: T Y P O G R A P H Y      */
+
+/* Header */
+header.site-header {
+    margin: 2em 0;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Header navigation links */
+header.site-header nav,
+.nav-left {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5em;
+}
+
+header.site-header a {
+    color: inherit;
+}
+header.site-header a:hover {
+    color: var(--link-color);
+}
+
+.site-title a,
+.site-title a:hover {
+    color: var(--text-bold-color);
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+}
+
+/* Button used for toggling the mobile navigation bar */
+header.site-header .nav-button {
+    border: 0;
+    padding: 0 0.5em;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: inherit;
+    color: var(--link-color);
+    
+    /* Hide menu button on desktop views */
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    header.site-header {
+        flex-direction: column;
+    }
+
+    /* Hide nav by default on mobile */
+    header.site-header nav.hidden-mobile {
+        display: none;
+    }
+
+    /* When navigation is shown, then display links in rows */
+    header.site-header nav {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5em;
+        margin-top: 1em;
+    }
+
+    header.site-header .nav-button {
+        display: inline-block;
+    }
+}
+
+/* Post List */
+.posts h1 {
+    font-size: inherit;
+}
+.posts ul {
+    list-style: none;
+}
+.posts ul li {
+    display: flex;
+    margin: 0.25em 0;
+}
+.posts ul li time {
+    flex: 1;
+    text-align: right;
+    margin-right: 2rem;
+}
+.posts ul li a {
+    flex: 2;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 800px) {
+    .posts ul li {
+        flex-direction: column;
+        margin: 1em 0;
+    }
+    .posts ul li time {
+        line-height: 1;
+        text-align: left;
+        margin-right: 0;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Post Content */
+
+/* Post title */
+article header h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5em;
+}
+
+/* Post details */
+article header .post-meta,
+article header .post-meta .tags {
+    display: flex;
+    gap: 1em;
+    font-size: 1rem;
+}
+
+/* Post tags */
+article header .post-meta .tags a:before {
+    content: "#";
+}
+
+/* Change flex-direction and gap between date and tags */
+@media screen and (max-width: 800px) {
+    article header .post-meta {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Cover image */
+.post-cover img {
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Post pagination */
+article .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+}
+article .pagination a {
+    flex: 1;
+}
+
+
+/* Footer */
+footer {
+    margin-top: 2em;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+footer .copyright {
+    color: var(--text-bold-color);
+}

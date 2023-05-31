@@ -1,40 +1,43 @@
 baseURL: "https://colinmurphy.me/"
-theme: "hello-friend"
-paginate: 5
+theme: "tux"
+title: "Colin Murphy's site"
+author: "Colin Murphy"
+copyright: "© 2023 Colin Murphy"
+paginate: 50
 enableRobotsTXT: true
 enableEmoji: true
 
 permalinks:
   posts: "/:section/:year/:month/:filename"
 
+# Only enable the tags taxonomy, and not categories
+taxonomies:
+  tags: "tags"
+
 params:
-  # Amount of menubar items to display
-  showMenuItems: 3
+  # Show posts on home page
+  homeShowPosts: true
 
-  showReadingTime: false
+  # Show only posts in the posts directory on homepage
+  mainSections: ["posts"]
 
-  # The main folder containing blog posts
-  contentTypeName: "posts"
-    
+  # Date format
+  dateFormat: "January 2, 2006"
 
-languages:
-  en:
-    title: "Colin Murphy's site"
-    subtitle: "IT Guides and other stuff"
-    copyright: "&copy; Colin Murphy"
-    logo:
-      logoText: "Colin Murphy's site"
-    menu:
-      main:
-        - identifier: "about"
-          name: "About"
-          url: "/about"
-        - identifier: "tags"
-          name: "Tags"
-          url: "/tags"
-        - identifier: "archive"
-          name: "Archive"
-          url: "/archive"
+  # Favicon path
+  favicon: "/img/favicon.png"
+
+  # Hide the Hugo/Tux theme links
+  footerHideCredits: true
+
+  # Show the post's cover image before the headline
+  showCoverFirst: false
+
+menu:
+  main:
+    - name: "About"
+      url: "/about"  
+      weight: 10
 
 markup:
   goldmark:

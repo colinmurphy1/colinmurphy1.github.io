@@ -1,0 +1,17 @@
+<header class="site-header">
+    <div class="nav-left">
+        <div class="site-title">
+            {{- with .Site.Title }}
+            <a href="{{ $.Site.BaseURL | absURL }}">
+                {{ . }}
+            </a>
+            {{- end }}
+        </div>
+        <div class="nav-button">&#9776; Menu</div>
+    </div>
+    <nav class="hidden-mobile">
+        {{- range .Site.Menus.main }}
+        <a href="{{ .URL | absURL }}">{{ .Name }}</a>
+        {{- end }}
+    </nav>
+</header>

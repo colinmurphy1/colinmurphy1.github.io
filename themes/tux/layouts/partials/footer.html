@@ -1,0 +1,10 @@
+<footer>
+    {{- if .Site.Copyright }}
+    <div class="copyright">{{ .Site.Copyright }}</div>
+    {{ end }}
+    {{- if ne .Site.Params.footerHideCredits true | default false }}
+    <div class="credits">
+        Powered by <a href="https://gohugo.io">Hugo</a> &bull; <a href="https://colinmurphy.me/tux-theme">Tux</a> theme
+    </div>
+    {{- end }}
+</footer>

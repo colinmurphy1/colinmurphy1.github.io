@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="posts">
+    {{- if .Data.Singular }}
+    <h1>{{ .Title | humanize }}</h1>
+    {{- end }}
+    <ul>
+        {{ range .Pages }}
+            {{ .Render "li" }}
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
