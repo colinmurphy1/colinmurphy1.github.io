@@ -3,7 +3,7 @@ theme: "tux"
 title: "Colin Murphy's site"
 author: "Colin Murphy"
 copyright: "© 2023 Colin Murphy"
-paginate: 50
+paginate: 25
 enableRobotsTXT: true
 enableEmoji: true
 
