@@ -6,6 +6,8 @@
     --text-bold-color: #000000;
     --link-color: #1565c0;
     --border-color: #ff8902;
+
+    --font-size-small: 1rem;
 }
 
 /* Dark theme */
@@ -53,7 +55,8 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 1em 0;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     font-weight: 600;
     line-height: normal;
 }
@@ -114,7 +117,7 @@ blockquote p {
     color: var(--text-bold-color);
 }
 blockquote > cite {
-    font-size: 0.9rem;
+    font-size: var(--font-size-small);
     color: inherit;
 }
 
@@ -140,7 +143,7 @@ img {
 }
 
 figcaption {
-    font-size: 1rem;
+    font-size: var(--font-size-small);
 }
 
 time { font-style: italic; }
@@ -154,7 +157,6 @@ time { font-style: italic; }
 /* Header */
 header.site-header {
     margin: 2em 0;
-    font-weight: 600;
     display: flex;
     justify-content: space-between;
 }
@@ -177,6 +179,7 @@ header.site-header a:hover {
 .site-title a,
 .site-title a:hover {
     color: var(--text-bold-color);
+    font-weight: 600;
     text-decoration: none;
     /*text-transform: uppercase;*/
 }
@@ -248,25 +251,19 @@ header.site-header .nav-button {
         line-height: 1;
         text-align: left;
         margin-right: 0;
-        font-size: 0.9rem;
+        font-size: var(--font-size-small);
     }
 }
 
-
 /* Post Content */
-
-/* Post title */
-article header h1 {
-    font-size: 2.25rem;
-    margin-bottom: 0.5em;
-}
 
 /* Post details */
 article header .post-meta,
 article header .post-meta .tags {
     display: flex;
-    gap: 1em;
-    font-size: 1rem;
+    gap: 0 1em;
+    font-size: var(--font-size-small);
+    flex-wrap: wrap;
 }
 
 /* Post tags */
@@ -304,7 +301,7 @@ article .pagination a {
 footer {
     margin-top: 2em;
     text-align: center;
-    font-size: 1rem;
+    font-size: var(--font-size-small);
     display: flex;
     justify-content: space-between;
 }
