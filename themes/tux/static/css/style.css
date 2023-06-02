@@ -271,8 +271,10 @@ article header .post-meta,
 article header .post-meta .tags {
     display: flex;
     gap: 0 1em;
-    font-size: var(--font-size-small);
     flex-wrap: wrap;
+}
+article header .post-meta > * {
+    font-size: var(--font-size-small);
 }
 
 /* Post tags */
