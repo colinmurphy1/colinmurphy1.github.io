@@ -7,7 +7,7 @@
     --link-color: #1565c0;
     --border-color: #ff8902;
 
-    --font-size-small: 1rem;
+    --font-size-small: 0.9em;
 }
 
 /* Dark theme */
@@ -35,7 +35,7 @@ body {
     font-family: 'Hanken Grotesk', sans-serif;
     margin: 2rem;
     line-height: 1.8em;
-    font-size: 18px;
+    font-size: 1.125rem;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
@@ -59,6 +59,10 @@ h6 {
     margin-bottom: 0.5em;
     font-weight: 600;
     line-height: normal;
+}
+
+h1 {
+    font-size: 1.688em;
 }
 
 /* H4-H6 use the same styling */
@@ -102,8 +106,8 @@ pre, code {
     line-height: normal;
 }
 
-code {
-    font-size: 0.8em;
+pre > code {
+    font-size: var(--font-size-small);
 }
 
 /* Blockquote */
@@ -119,6 +123,11 @@ blockquote p {
 blockquote > cite {
     font-size: var(--font-size-small);
     color: inherit;
+}
+
+/* Nested blockquote */
+blockquote > blockquote {
+    margin: 1em 0.25em 1em 0.25em;
 }
 
 /* Pre, Blockquote, Figure tags go slightly out of main content area on desktop */
