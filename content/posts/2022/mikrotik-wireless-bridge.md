@@ -43,13 +43,21 @@ To connect to your router, plug it in to the same switch as your computer, or
 directly into your computer's network port. Once that is done, open up WinBox
 and select the **Neighbors** tab.
 
-![Winbox showing neighbors](/img/WinBox-Neighbors.png)
+{{< figure
+  src="/img/WinBox-Neighbors.png"
+  alt="WinBox showing neighbors"
+  caption="WinBox showing discovered MikroTik devices"
+  position="center" >}}
 
 Once connected using Winbox, we will configure the router using the command
 line interface. This can be launched by selecting the **New Terminal** option
 in WinBox.
 
-![Winbox terminal](/img/Winbox-terminal.png)
+{{< figure
+  src="/img/Winbox-terminal.png"
+  alt="Opening a new terminal in WinBox"
+  caption="Opening a new terminal in WinBox"
+  position="center" >}}
 
 Inside this terminal, you will type in the below commands to configure the
 router.
