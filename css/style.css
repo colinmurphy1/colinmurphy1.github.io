@@ -8,7 +8,7 @@
     --border-color: #ff8902;
 
     --font-size-small: 0.9em;
-    --border-radius: 10px;
+    --border-radius: 8px;
 }
 
 /* Dark theme */
@@ -110,8 +110,8 @@ pre {
     margin: 1rem 0;
     padding: 0.5em 1rem;
     background-color: var(--bg-alt-color);
-    border-radius: var(--border-radius);
     overflow: auto;
+    border-radius: var(--border-radius);
 }
 
 pre > code {
@@ -139,12 +139,11 @@ blockquote > blockquote {
 }
 
 /* Pre, Blockquote, Figure tags, and pagination, go slightly out of main content area on desktop */
-@media screen and (min-width: 800px) {
-    pre, blockquote, figure, .pagination {
-        margin-left: -2em;
-        margin-right: -2em;
-    }
+pre, blockquote, figure, .pagination {
+    margin-left: -2rem;
+    margin-right: -2rem;
 }
+
 
 
 /* Images */
@@ -290,10 +289,6 @@ article header .post-meta time {
     font-weight: 600;
 }
 
-article header .post-meta time::before {
-    content: "📅 "
-}
-
 /* Post tags */
 article header .post-meta .tags a:before {
     content: "#";
@@ -309,8 +304,15 @@ article header .post-meta .tags a:before {
 
 /* Cover image */
 .post-cover img {
-    border-radius: 8px;
     width: 100%;
+}
+
+/* Add border radius to post-cover and pre tags on desktop */
+@media screen and (min-width: 800px) {
+    .post-cover img,
+    pre {
+        border-radius: var(--border-radius);
+    }
 }
 
 /* Post pagination */
@@ -328,6 +330,10 @@ article .pagination a.prev {
     text-align: right;
 }
 @media screen and (max-width: 800px) {
+    .pagination {
+        margin-left: 0;
+        margin-right: 0;
+    }
     article .pagination a.prev {
         text-align: left;
         margin-left: 0;
