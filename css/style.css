@@ -111,10 +111,10 @@ pre {
     padding: 0.5em 1rem;
     background-color: var(--bg-alt-color);
     overflow: auto;
-    border-radius: var(--border-radius);
 }
 
 pre > code {
+    text-size-adjust: none; /* prevent webkit browsers from adjusting font sizes randomly */
     font-size: var(--font-size-small);
 }
 
