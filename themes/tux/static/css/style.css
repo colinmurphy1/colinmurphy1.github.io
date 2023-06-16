@@ -205,7 +205,7 @@ header.site-header .nav-button {
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 860px) {
     header.site-header {
         flex-direction: column;
     }
@@ -253,7 +253,7 @@ header.site-header .nav-button {
     font-weight: 600;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 860px) {
     .posts ul li {
         flex-direction: column;
         margin: 1em 0;
@@ -293,7 +293,7 @@ article header .post-meta .tags a:before {
 }
 
 /* Change flex-direction and gap between date and tags */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 860px) {
     article header .post-meta {
         flex-direction: column;
         gap: 0;
@@ -301,7 +301,7 @@ article header .post-meta .tags a:before {
 }
 
 /* Add border radius to post-cover and pre tags on desktop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 860px) {
     .post-cover img,
     pre {
         border-radius: var(--border-radius);
@@ -322,7 +322,7 @@ article .pagination a.prev {
     margin-left: auto;
     text-align: right;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 860px) {
     .pagination {
         margin-left: 0;
         margin-right: 0;
