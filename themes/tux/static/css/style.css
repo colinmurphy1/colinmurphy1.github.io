@@ -24,11 +24,6 @@
 
 *, ::after, ::before {
     box-sizing: border-box;
-    padding: 0;
-}
-
-* {
-    margin: 0;
 }
 
 body {
@@ -138,13 +133,6 @@ blockquote > blockquote {
     }
 }
 
-/* Lists */
-article ul, 
-article ol {
-    margin-left: 2em;
-    padding: 0;
-}
-
 /* Images */
 img {
     max-width: 100%;
@@ -190,7 +178,6 @@ header.site-header a:hover {
     color: var(--text-bold-color);
     font-weight: 600;
     text-decoration: none;
-    /*text-transform: uppercase;*/
 }
 
 /* Button used for toggling the mobile navigation bar */
@@ -236,6 +223,8 @@ header.site-header .nav-button {
 }
 .posts ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .posts ul li {
     display: flex;
