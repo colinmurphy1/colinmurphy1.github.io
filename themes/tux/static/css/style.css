@@ -8,9 +8,11 @@
     --border-color: #ff8902;
 
     --font-size-small: 0.9em;
+    --border-radius: 10px;
 }
 
 /* Dark theme */
+/*
 @media (prefers-color-scheme: dark) {
 :root {
     --bg-color: #212121;
@@ -21,26 +23,42 @@
     --border-color: #ff8902;
 }
 }
+*/
 
 *, ::after, ::before {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Hanken Grotesk', sans-serif;
     margin: 2rem;
-    line-height: 1.8em;
+    line-height: 2rem;
     font-size: 1.125rem;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
 .container {
-    max-width: 800px;
+    max-width: 860px;
     margin: auto;
 }
 
 /*      T Y P O G R A P H Y      */
+
+/* Font Declarations */
+body,
+input[type='text'],
+input[type='password'],
+input[type='submit'],
+input[type='reset'],
+button,
+textarea {
+    font-family: 'Inter', sans-serif;
+}
+
+pre, code {
+    font-family: 'Inconsolata', 'Consolas', 'Menlo', 'Monaco', monospace;
+    line-height: normal;
+}
 
 /* Headings */
 
@@ -50,14 +68,15 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     line-height: normal;
 }
 
 h1 {
-    font-size: 1.688em;
+    font-size: 2.25rem;
+    line-height: 3.25rem;
 }
 
 /* H4-H6 use the same styling */
@@ -68,14 +87,13 @@ h4, h5, h6 {
 /* Paragraphs */
 
 p {
-    margin: 1em 0;
+    margin: 1rem 0;
 }
 
 /* Links */
 a {
     text-decoration: none;
     color: var(--link-color);
-    transition: 0.2s color ease-in;
 }
 a:hover,
 a:active {
@@ -89,16 +107,11 @@ pre, blockquote, figure {
 
 /* Code Blocks */
 pre {
-    margin: 1em 0;
-    padding: 0.5em 1em;
+    margin: 1rem 0;
+    padding: 0.5em 1rem;
     background-color: var(--bg-alt-color);
-    border-left: solid 2px var(--link-color);
+    border-radius: var(--border-radius);
     overflow: auto;
-}
-
-pre, code {
-    font-family: 'Fira Code', 'Consolas', 'Menlo', 'Monaco', monospace;
-    line-height: normal;
 }
 
 pre > code {
@@ -125,13 +138,14 @@ blockquote > blockquote {
     margin: 1em 0.25em 1em 0.25em;
 }
 
-/* Pre, Blockquote, Figure tags go slightly out of main content area on desktop */
+/* Pre, Blockquote, Figure tags, and pagination, go slightly out of main content area on desktop */
 @media screen and (min-width: 800px) {
-    pre, blockquote, figure {
+    pre, blockquote, figure, .pagination {
         margin-left: -2em;
         margin-right: -2em;
     }
 }
+
 
 /* Images */
 img {
@@ -143,8 +157,6 @@ figcaption {
     font-size: var(--font-size-small);
 }
 
-time { font-style: italic; }
-
 .center {
     text-align: center;
 }
@@ -153,9 +165,10 @@ time { font-style: italic; }
 
 /* Header */
 header.site-header {
-    margin: 2em 0;
+    margin: 2rem 0;
     display: flex;
     justify-content: space-between;
+    user-select: none; /* Prevents highlighting header */
 }
 
 /* Header navigation links */
@@ -163,11 +176,12 @@ header.site-header nav,
 .nav-left {
     display: flex;
     justify-content: space-between;
-    gap: 1.5em;
+    gap: 1.5rem;
 }
 
 header.site-header a {
     color: inherit;
+    transition: 0.2s color ease-in;
 }
 header.site-header a:hover {
     color: var(--link-color);
@@ -178,6 +192,7 @@ header.site-header a:hover {
     color: var(--text-bold-color);
     font-weight: 600;
     text-decoration: none;
+    display: block;
 }
 
 /* Button used for toggling the mobile navigation bar */
@@ -188,6 +203,7 @@ header.site-header .nav-button {
     cursor: pointer;
     font-size: inherit;
     color: var(--link-color);
+    background-color: var(--bg-alt-color);
     
     /* Hide menu button on desktop views */
     display: none;
@@ -220,6 +236,7 @@ header.site-header .nav-button {
 /* Post List */
 .posts h1 {
     font-size: inherit;
+    line-height: inherit;
 }
 .posts ul {
     list-style: none;
@@ -228,12 +245,12 @@ header.site-header .nav-button {
 }
 .posts ul li {
     display: flex;
-    margin: 0.25em 0;
+    margin: 0.5rem 0;
+    gap: 1rem;
 }
 .posts ul li time {
     flex: 1;
     text-align: right;
-    margin-right: 2rem;
 }
 .posts ul li a {
     flex: 2;
@@ -248,7 +265,6 @@ header.site-header .nav-button {
     .posts ul li time {
         line-height: 1;
         text-align: left;
-        margin-right: 0;
         font-size: var(--font-size-small);
     }
 }
@@ -256,14 +272,26 @@ header.site-header .nav-button {
 /* Post Content */
 
 /* Post details */
+article header {
+    margin: 2rem 0;
+}
 article header .post-meta,
 article header .post-meta .tags {
     display: flex;
-    gap: 0 1em;
+    gap: 0 1rem;
     flex-wrap: wrap;
 }
 article header .post-meta > * {
     font-size: var(--font-size-small);
+}
+
+/* Post Date */
+article header .post-meta time {
+    font-weight: 600;
+}
+
+article header .post-meta time::before {
+    content: "📅 "
 }
 
 /* Post tags */
@@ -288,12 +316,26 @@ article header .post-meta .tags a:before {
 /* Post pagination */
 article .pagination {
     display: flex;
-    justify-content: center;
-    gap: 2em;
-    margin-top: 2em;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+    font-size: var(--font-size-small);
+    line-height: normal;
 }
-article .pagination a {
-    flex: 1;
+
+article .pagination a.prev {
+    margin-left: auto;
+    text-align: right;
+}
+@media screen and (max-width: 800px) {
+    article .pagination a.prev {
+        text-align: left;
+        margin-left: 0;
+    }
+    article .pagination {
+        flex-direction: column;
+        font-size: inherit;
+    }
 }
 
 
