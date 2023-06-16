@@ -12,7 +12,6 @@
 }
 
 /* Dark theme */
-/*
 @media (prefers-color-scheme: dark) {
 :root {
     --bg-color: #212121;
@@ -23,7 +22,7 @@
     --border-color: #ff8902;
 }
 }
-*/
+
 
 *, ::after, ::before {
     box-sizing: border-box;
@@ -113,7 +112,7 @@ pre {
     overflow: auto;
 }
 
-pre > code {
+pre > * {
     text-size-adjust: none; /* prevent webkit browsers from adjusting font sizes randomly */
     font-size: var(--font-size-small);
 }
@@ -143,8 +142,6 @@ pre, blockquote, figure, .pagination {
     margin-left: -2rem;
     margin-right: -2rem;
 }
-
-
 
 /* Images */
 img {
@@ -260,9 +257,10 @@ header.site-header .nav-button {
     .posts ul li {
         flex-direction: column;
         margin: 1em 0;
+        gap: 0;
     }
     .posts ul li time {
-        line-height: 1;
+        line-height: normal;
         text-align: left;
         font-size: var(--font-size-small);
     }
@@ -300,11 +298,6 @@ article header .post-meta .tags a:before {
         flex-direction: column;
         gap: 0;
     }
-}
-
-/* Cover image */
-.post-cover img {
-    width: 100%;
 }
 
 /* Add border radius to post-cover and pre tags on desktop */

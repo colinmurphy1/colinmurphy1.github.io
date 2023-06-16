@@ -45,4 +45,8 @@ menu:
 markup:
   goldmark:
     renderer:
-      unsafe: true # Allow HTML to be embedded in markdown pages
+      # Allow HTML to be embedded in markdown pages
+      unsafe: true
+  highlight:
+    # Disable built in syntax highlighting styles in favor of custom CSS
+    noClasses: false
