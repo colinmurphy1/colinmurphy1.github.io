@@ -100,7 +100,7 @@ a:active {
 }
 
 /* Give most typography elements 2em margins */
-pre, blockquote, figure {
+pre, blockquote, figure, hr {
     margin: 2em 0;
 }
 
@@ -155,6 +155,11 @@ figcaption {
 
 .center {
     text-align: center;
+}
+
+hr {
+    border: 0;
+    border-bottom: solid 2px var(--border-color);
 }
 
 /*      END: T Y P O G R A P H Y      */
