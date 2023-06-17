@@ -10,33 +10,30 @@ tags:
   - beammp
 ---
 
-A quick guide on installing a Minecraft and/or BeamMP server on Debian.
-
-As I write guides for installing different game servers, this page may be split
-up into multiple pages.
+A quick guide on installing various game servers on Debian. As I write more 
+guides for installing different game servers, this page may be split up into
+multiple pages.
 
 ## Minecraft Server
 
-Create a directory for the Minecraft server
+1. Install Java JRE Headless
+
+```bash
+sudo apt install default-jre-headless
+```
+
+2. Create a new directory for the Minecraft server
 
 ```bash
 mkdir -p ~/games/minecraft
 cd ~/games/minecraft
 ```
 
-Install Java JRE Headless
+3. Download latest Minecraft server .jar file from https://www.minecraft.net/en-us/download/server,
+and save it to the `~/games/minecraft` directory.
 
-```bash
-sudo apt install default-jre-headless
-```
+4. Make systemd service directory (as minecraft user) and make a new service file:
 
-Download latest Minecraft from https://www.minecraft.net/en-us/download/server
-
-```bash
-wget https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar
-```
-
-Make systemd service directory (as minecraft user) and make a new service file:
 ```bash
 mkdir -p ~/.config/systemd/user
 nano ~/.config/systemd/user/minecraft.service
@@ -53,10 +50,10 @@ WorkingDirectory=%h/games/minecraft
 ExecStart=java -Xms1G -Xmx2G -jar server.jar
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
-Start and enable service
+5. Start and enable service
 
 ```bash
 systemctl --user daemon-reload
@@ -64,33 +61,46 @@ systemctl --user start minecraft
 systemctl --user enable minecraft
 ```
 
-Open port in firewall
+6. Open port 25565/tcp in firewall to allow others to connect to the server
 
 ```bash
-sudo firewall-cmd --permanent --zone=public --add-port=30814/tcp 
+sudo firewall-cmd --permanent --zone=public --add-port=25565/tcp 
 ```
+
+7. Launch Minecraft on your computer and connect to the server
+
+---
 
 ## BeamMP Server
 
+1. Install BeamMP dependencies
 
-Create game server folder and install dependencies (including dtach)
+```bash
+sudo apt install liblua5.3-0 libssl3 curl dtach
+```
+
+2. Create game server folder
 
 ```bash
 mkdir -p ~/games/beammp
 cd ~/games/beammp
-sudo apt install liblua5.3-0 libssl3 curl dtach
 ```
 
-Download BeamMP from [GitHub](https://github.com/BeamMP/BeamMP-Server/releases).
+3. Download BeamMP from [GitHub](https://github.com/BeamMP/BeamMP-Server/releases).
+
+**Note:** At the time of writing, there is no Debian 12 binary. Instead, use the
+Ubuntu 22.04 binary which appears to work fine.
 
 ```bash
-# Even though this is on Debian 12, I'm using the ubuntu 22.04 binary because it just werks
 wget https://github.com/BeamMP/BeamMP-Server/releases/download/v3.1.1/BeamMP-Server-ubuntu-22.04 -O beammp-server
+
+# make the binary executable
+chmod +x beammp-server
 ```
 
-Configure BeamMP using the directions on the [BeamMP Wiki](https://wiki.beammp.com/en/home/server-installation).
+4. Configure BeamMP using the directions on the [BeamMP Wiki](https://wiki.beammp.com/en/home/server-installation).
 
-Create systemd service file at `~/.config/systemd/user/beammp.service`. Contents:
+5. Create systemd service file at `~/.config/systemd/user/beammp.service`. Contents are below.
 
 ```ini
 [Unit]
@@ -104,7 +114,7 @@ WorkingDirectory=%h/games/beammp/
 ExecStart=dtach -n /tmp/beammp ./beammp-server
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
 Start and optionally enable service
@@ -114,7 +124,7 @@ systemctl --user start beammp
 systemctl --user enable beammp
 ```
 
-Open port UDP and TCP port 30814, the port the BeamMP server listens on
+6. Open port UDP and TCP port 30814, the port the BeamMP server listens on
 
 ```bash
 sudo firewall-cmd --permanent --zone=public --add-port=30814/tcp --add-port=30814/udp

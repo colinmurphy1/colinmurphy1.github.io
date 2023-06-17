@@ -1,5 +1,5 @@
 ---
-title: Misc
+title: Miscellaneous Guides
 ---
 
 # Miscellaneous Guides
