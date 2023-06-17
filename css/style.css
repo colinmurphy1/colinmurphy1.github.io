@@ -313,6 +313,11 @@ article header .post-meta .tags a:before {
     }
 }
 
+/* Cover image */
+.post-cover img {
+    width: 100%;
+}
+
 /* Post pagination */
 article .pagination {
     display: flex;
