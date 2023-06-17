@@ -1,0 +1,3 @@
+[submodule "themes/tux"]
+	path = themes/tux
+	url = https://github.com/colinmurphy1/hugo-theme-tux
