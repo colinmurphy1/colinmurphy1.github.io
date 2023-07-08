@@ -1,7 +1,7 @@
 ---
 title: "About this website"
 description: "About me and this website"
-date: 2022-12-30
+date: 2023-07-07
 cover: "/img/miata.jpg"
 ---
 
@@ -16,7 +16,7 @@ I currently work as a systems engineer in the higher education sector. Most of
 my day to day work revolves around supporting Windows and Microsoft 365
 infrastructure, but I do get to and enjoy using Linux from time to time. Outside
 of work I am also currently pursing my BS in Information Technology at
-Western Governor's University.
+Western Governors University.
 
 ## How this website is built
 
@@ -42,7 +42,7 @@ moving it to Azure.
 ## Contact me
 
 If you have any comments on the site, or just want to say hi, you can reach out
-to me via email. My email address is colin at this domain name.
+to me via email. My email address is colin@colinmurphy.me.
 
 [hugo]:https://gohugo.io
 [theme]:https://github.com/colinmurphy1/hugo-theme-tux
