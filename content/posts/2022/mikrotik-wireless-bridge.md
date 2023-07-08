@@ -70,8 +70,10 @@ not optimal for our use case, so we will need to factory reset this router to
 an empty configuration. You can reset the configuration of the router by
 running the below command:
 
-    /system/reset-configuration no-defaults=yes
-    Dangerous! Reset anyway? [y/N]: y
+```
+/system/reset-configuration no-defaults=yes
+Dangerous! Reset anyway? [y/N]: y
+```
 
 This will reset the router to an empty configuration with no interfaces
 configured. This will make the configuration in the following steps a lot
