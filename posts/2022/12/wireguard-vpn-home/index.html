@@ -30,7 +30,7 @@ configuration files. This is located at <code>/etc/sysctl.d/99-sysctl.conf</code
 </span></span><span class=line><span class=cl><span class=na>PrivateKey</span> <span class=o>=</span> <span class=s>SERVER Private Key</span>
 </span></span><span class=line><span class=cl><span class=na>PostUp</span> <span class=o>=</span> <span class=s>iptables -A FORWARD -i br0 -o %i -j ACCEPT; iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE</span>
 </span></span><span class=line><span class=cl><span class=na>PostDown</span> <span class=o>=</span> <span class=s>iptables -D FORWARD -i br0 -o %i -j ACCEPT; iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o br0 -j MASQUERADE</span>
-</span></span><span class=line><span class=cl><span class=na> </span>
+</span></span><span class=line><span class=cl> 
 </span></span><span class=line><span class=cl><span class=k>[Peer]</span>
 </span></span><span class=line><span class=cl><span class=na>PublicKey</span> <span class=o>=</span> <span class=s>Peer1 public key</span>
 </span></span><span class=line><span class=cl><span class=na>AllowedIPs</span> <span class=o>=</span> <span class=s>192.168.99.2/32</span>
@@ -40,7 +40,7 @@ cases, this will be <code>eth0</code> or something along the lines of <code>enp1
 file.</p><h2 id=creating-a-configuration-file-for-the-client>Creating a configuration file for the client</h2><p>This file will work as a configuration for the client:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ini data-lang=ini><span class=line><span class=cl><span class=k>[Interface]</span>
 </span></span><span class=line><span class=cl><span class=na>PrivateKey</span> <span class=o>=</span> <span class=s>Peer1 private key</span>
 </span></span><span class=line><span class=cl><span class=na>Address</span> <span class=o>=</span> <span class=s>192.168.99.2/32 </span>
-</span></span><span class=line><span class=cl><span class=na> </span>
+</span></span><span class=line><span class=cl> 
 </span></span><span class=line><span class=cl><span class=k>[Peer]</span>
 </span></span><span class=line><span class=cl><span class=na>PublicKey</span> <span class=o>=</span> <span class=s>SERVER public key</span>
 </span></span><span class=line><span class=cl><span class=na>AllowedIPs</span> <span class=o>=</span> <span class=s>192.168.99.0/24, 192.168.1.0/24</span>
