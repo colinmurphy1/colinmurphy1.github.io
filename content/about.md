@@ -22,22 +22,15 @@ Western Governors University.
 
 This website is built using the excellent [Hugo][hugo] static site generator,
 and a [custom-built theme][theme]. I write all posts, notes, and pages using
-Markdown in Visual Studio Code. As the website is largely static content, this
-website is currently hosted using GitHub Pages, although I have considered
-moving it to Azure.
+Markdown in Visual Studio Code. Other tools used with this website include:
+
+- [Cloudflare](https://cloudflare.com) - DNS and CDN
+- [Goatcounter](https://goatcounter.com) - Privacy-friendly web analytics
+- [GitHub Pages](https://pages.github.com/) - Web Hosting
 
 ## Other cool stuff
 
-<div class="center">
-
-![Geocities wants their website back](/img/lol/construction1.gif)
-
-![construction](/img/lol/construction.gif)
-**MORE TO COME LATER... THIS PAGE IS**
-![UNDER CONSTRUCTION](/img/lol/construction2.gif)
-![construction](/img/lol/construction.gif)
-
-</div>
+*More to come - check back soon!*
 
 ## Contact me
 
