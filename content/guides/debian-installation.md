@@ -20,8 +20,8 @@ releases of Debian.
 su -
 # enter root password
 apt update
-apt full-upgrade
-apt install sudo htop nano vim tmux dtach firewalld fail2ban rsync
+apt -y dist-upgrade
+apt -y install sudo htop nano vim tmux dtach firewalld fail2ban rsync curl git
 ```
 
 3. Copy SSH key as your **normal user**.
@@ -59,7 +59,7 @@ nano /etc/ssh/sshd_config
 
 Make the following changes:
 
-- Set **PasswordAuthentication** to **yes**
+- Set **PasswordAuthentication** to **no**
 - Add **AuthenticationMethods** and set it to **publickey**
 
 7. Restart sshd
@@ -68,12 +68,22 @@ Make the following changes:
 systemctl restart sshd
 ```
 
-8. Configure firewall
+8. Set locale to the locale of your country, in my case `en_US.UTF-8`. This is
+not necessary on regular Debian installations, but I have found this necessary
+when using Linux containers in Proxmox.
 
 ```bash
+dpkg-reconfigure locales
+```
+
+9. Configure firewall
+
+```bash
+# Start and enable the firewalld service
 systemctl start firewalld
 systemctl enable firewalld
 
+# Add eno1 interface to the public zone - find interface first with `ip a`
 firewall-cmd --zone=public --change-interface=eno1
 ```
 
@@ -89,10 +99,10 @@ firewall-cmd --permanent --zone=public --add-service=ssh
 Additional services or ports can be enabled like so:
 
 ```bash
-# Allow HTTP and HTTPS traffic
+# Open HTTP and HTTPS ports
 firewall-cmd --permanent --zone=public --add-service={http,https}
 
-# Allow Minecraft traffic
+# Open Minecraft port
 firewall-cmd --permanent --zone=public --add-port=25565/tcp
 ```
 
@@ -104,6 +114,6 @@ firewall-cmd --list-all
 
 [Firewalld beginners guide](https://www.redhat.com/sysadmin/beginners-guide-firewalld)
 
-9. Configure fail2ban to block SSH bruteforce login attempts
+10. Configure fail2ban to block SSH bruteforce login attempts
 
 WIP
