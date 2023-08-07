@@ -33,6 +33,9 @@ params:
   # Show the post's cover image before the headline
   showCoverFirst: false
 
+  # GoatCounter (goatcounter.com) Code
+  goatCounterCode: "colinmurphy"
+
 menu:
   main:
     - name: "About"
