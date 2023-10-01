@@ -28,7 +28,7 @@ params:
   favicon: "/img/favicon.png"
 
   # Hide the Hugo/Tux theme links
-  footerHideCredits: false
+  footerHideCredits: true 
 
   # Show the post's cover image before the headline
   showCoverFirst: false
