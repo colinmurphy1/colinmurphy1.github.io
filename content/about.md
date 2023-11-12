@@ -14,9 +14,7 @@ to new places around the United States.
 
 I currently work as a systems engineer in the higher education sector. Most of
 my day to day work revolves around supporting Windows and Microsoft 365
-infrastructure, but I do get to and enjoy using Linux from time to time. Outside
-of work I am also currently pursing my BS in Information Technology at
-Western Governors University.
+infrastructure, but I do get to and enjoy using Linux from time to time.
 
 ## How this website is built
 
@@ -30,7 +28,25 @@ Markdown in Visual Studio Code. Other tools used with this website include:
 
 ## Other cool stuff
 
-*More to come - check back soon!*
+### The home server
+
+{{< figure
+  src="/img/server.jpg"
+  alt="The home server"
+  caption="The home server in all of its glory"
+  position="center" >}}
+
+
+I run a few services off a custom-built server I built mainly out of parts from
+an old storage appliance. Specs are below:
+
+* Intel Xeon E5-2618L v4 CPU
+* Supermicro X10SRi-F motherboard
+* 256GB DDR4 ECC Registered RAM
+* Noctua NH-U9DX i4 cooler
+* 500GB NVMe boot drive
+* 4x 4TB WD HC310 drives in a ZFS 2-way mirror
+* Proxmox VE hypervisor
 
 ## Contact me
 

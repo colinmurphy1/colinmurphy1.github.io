@@ -14,17 +14,37 @@ A quick guide on installing various game servers on Debian. As I write more
 guides for installing different game servers, this page may be split up into
 multiple pages.
 
+## Create a user account
+
+Before creating any game servers, we will need to first create a new user
+account to run the game servers as. We will also enable user lingering with
+loginctl, to ensure that the systemd services created will always remain
+running.
+
+1. Create a new user account
+
+```bash
+useradd -m -s /bin/bash games
+```
+
+2. Enable [user lingering](lingering) for the games user
+
+```bash
+loginctl enable-linger games
+```
+
 ## Minecraft Server
 
 1. Install Java JRE Headless
 
 ```bash
-sudo apt install default-jre-headless
+apt install default-jre-headless
 ```
 
 2. Create a new directory for the Minecraft server
 
 ```bash
+su games -
 mkdir -p ~/games/minecraft
 cd ~/games/minecraft
 ```
@@ -64,7 +84,7 @@ systemctl --user enable minecraft
 6. Open port 25565/tcp in firewall to allow others to connect to the server
 
 ```bash
-sudo firewall-cmd --permanent --zone=public --add-port=25565/tcp 
+firewall-cmd --permanent --zone=public --add-port=25565/tcp 
 ```
 
 7. Launch Minecraft on your computer and connect to the server
@@ -73,10 +93,10 @@ sudo firewall-cmd --permanent --zone=public --add-port=25565/tcp
 
 ## BeamMP Server
 
-1. Install BeamMP dependencies
+1. Install BeamMP dependencies and dtach
 
 ```bash
-sudo apt install liblua5.3-0 libssl3 curl dtach
+apt install liblua5.3-0 libssl3 curl dtach
 ```
 
 2. Create game server folder
@@ -127,7 +147,7 @@ systemctl --user enable beammp
 6. Open port UDP and TCP port 30814, the port the BeamMP server listens on
 
 ```bash
-sudo firewall-cmd --permanent --zone=public --add-port=30814/tcp --add-port=30814/udp
+firewall-cmd --permanent --zone=public --add-port=30814/tcp --add-port=30814/udp
 ```
 
 If you need to use the BeamMP server console, run the following command:
@@ -138,3 +158,5 @@ dtach -a /tmp/beammp
 
 You can detach from BeamMP console by hitting <kbd>Ctrl + \\</kbd>. If you
 accidentally kill the server, it will automatically restart in 5 seconds.
+
+[lingering]:https://www.freedesktop.org/software/systemd/man/latest/loginctl.html#enable-linger%20USER%E2%80%A6
