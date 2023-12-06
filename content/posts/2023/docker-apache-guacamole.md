@@ -12,7 +12,10 @@ cover: /img/guacamole-logo.jpg
 
 [Apache Guacamole][guac] is a web-based RDP, VNC, and SSH client. You can use it
 to access your servers from a web browser, without requiring any software
-installed. Before proceeding with the installation of Guacamole, the Docker
+to be installed on client devices. The installation process of Guacamole is
+relatively straightforward and takes a matter of minutes when using Docker.
+
+Before proceeding with the installation of Guacamole, the Docker
 Engine must be installed on your server. A guide for installing Docker on Debian
 is available [here][docker-install].
 
@@ -26,7 +29,8 @@ mkdir ~/guac
 cd ~/guac
 ```
 
-2.  Create a new environment variable file, `.env`, with the following contents:
+2.  Create a new environment variable file, `.env`. This file will contain
+    environment variables that store the database connection information.
 
 ```
 GUACAMOLE_DATABASE=guacamole
@@ -101,7 +105,6 @@ exit
 
 4.  Open the `docker-compose.yml` file once more and remove the line for
     mounting the `initdb.sql` file to the PostgreSQL container.
-
 
 5.  Recreate the containers
 
