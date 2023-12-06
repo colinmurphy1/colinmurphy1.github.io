@@ -27,7 +27,7 @@ running.
 useradd -m -s /bin/bash games
 ```
 
-2. Enable [user lingering](lingering) for the games user
+2. Enable [user lingering][lingering] for the games user
 
 ```bash
 loginctl enable-linger games
