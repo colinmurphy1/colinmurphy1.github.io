@@ -10,7 +10,7 @@ multiple pages.</p><h2 id=create-a-user-account>Create a user account</h2><p>Bef
 account to run the game servers as. We will also enable user lingering with
 loginctl, to ensure that the systemd services created will always remain
 running.</p><ol><li>Create a new user account</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>useradd -m -s /bin/bash games
-</span></span></code></pre></div><ol start=2><li>Enable <a href=lingering>user lingering</a> for the games user</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>loginctl enable-linger games
+</span></span></code></pre></div><ol start=2><li>Enable <a href=https://www.freedesktop.org/software/systemd/man/latest/loginctl.html#enable-linger%20USER%E2%80%A6>user lingering</a> for the games user</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>loginctl enable-linger games
 </span></span></code></pre></div><h2 id=minecraft-server>Minecraft Server</h2><ol><li>Install Java JRE Headless</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>apt install default-jre-headless
 </span></span></code></pre></div><ol start=2><li>Create a new directory for the Minecraft server</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>su games -
 </span></span><span class=line><span class=cl>mkdir -p ~/games/minecraft
