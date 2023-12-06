@@ -102,21 +102,18 @@ exit
 4.  Open the `docker-compose.yml` file once more and remove the line for
     mounting the `initdb.sql` file to the PostgreSQL container.
 
-## Access Guacamole
 
-1.  Recreate the containers
+5.  Recreate the containers
 
 ```bash
 docker compose up -d
 ```
 
-2.  Open a web browser, and navigate to http://your.ip:8080 and you should be
-    presented with a login screen.
-
-3.  Log in with the default credentials, which is `guacadmin` for both the
-    username and password.
-
 ## Configuring Guacamole
+
+Open a web browser, and navigate to http://your.ip:8080 and you should be
+presented with a login screen. The default username and password for Guacamole
+is `guacadmin`. 
 
 Once you have signed in to Guacamole, it is recommended to change the
 administrator password. This can be done by following the below steps:
