@@ -2,7 +2,7 @@ baseURL: "https://colinmurphy.me/"
 theme: "tux"
 title: "Colin Murphy's site"
 author: "Colin Murphy"
-copyright: "© 2023 Colin Murphy"
+copyright: "© 2024 Colin Murphy"
 paginate: 25
 enableRobotsTXT: true
 enableEmoji: true
