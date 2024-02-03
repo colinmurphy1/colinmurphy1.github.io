@@ -41,9 +41,9 @@ menu:
     - name: "About"
       url: "/about"
       weight: 10
-    - name: "Misc. Guides"
-      url: "/guides"
-      weight: 20
+#    - name: "Misc. Guides"
+#      url: "/guides"
+#      weight: 20
 
 markup:
   goldmark:
