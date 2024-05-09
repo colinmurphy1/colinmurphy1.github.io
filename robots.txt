@@ -1,3 +1,2 @@
-User-agent: *
-
-Sitemap: https://colinmurphy.me/sitemap.xml
+User-Agent: AhrefsBot
+Disallow: /
