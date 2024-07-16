@@ -1,7 +1,7 @@
 ---
 title: "About this website"
 description: "About me and this website"
-date: 2023-07-07
+date: 2024-07-15
 cover: "/img/miata.jpg"
 ---
 
@@ -24,7 +24,7 @@ Markdown in Visual Studio Code. Other tools used with this website include:
 
 - [Cloudflare](https://cloudflare.com) - DNS and CDN
 - [Goatcounter](https://goatcounter.com) - Privacy-friendly web analytics
-- [GitHub Pages](https://pages.github.com/) - Web Hosting
+- [Azure Static Web Apps][azure] - Web Hosting
 
 ## Other cool stuff
 
@@ -55,3 +55,4 @@ to me via email. My email address is colin@colinmurphy.me.
 
 [hugo]:https://gohugo.io
 [theme]:https://github.com/colinmurphy1/hugo-theme-tux
+[azure]:https://azure.microsoft.com/en-us/products/app-service/static
